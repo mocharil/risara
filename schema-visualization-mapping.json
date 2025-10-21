@@ -1,0 +1,500 @@
+{
+  "database": "risara",
+  "collections": {
+    "tiktok_data": {
+      "purpose": "Raw TikTok posts with AI analysis",
+      "document_count": 12,
+      "fields": {
+        "identification": {
+          "_id": { "type": "ObjectId", "visualization_use": "unique_key" },
+          "uuid": { "type": "string", "visualization_use": "unique_identifier" },
+          "link_post": { "type": "string", "visualization_use": "source_link" }
+        },
+        "user": {
+          "username": { "type": "string", "visualization_use": "creator_name, influencer_tracking" },
+          "profile_link": { "type": "string", "visualization_use": "creator_profile" }
+        },
+        "content": {
+          "post_caption": { "type": "string", "visualization_use": "content_display, text_analysis" },
+          "post_type": { "type": "string", "visualization_use": "content_filter" },
+          "thumbnail_url": { "type": "string", "visualization_use": "media_display" },
+          "post_hashtags": { "type": "array[string]", "visualization_use": "hashtag_cloud, trend_analysis" },
+          "post_mentions": { "type": "array[string]", "visualization_use": "network_graph" }
+        },
+        "temporal": {
+          "post_created_at": {
+            "type": "string (YYYY-MM-DD)",
+            "visualization_use": "time_series, date_filter, trend_analysis",
+            "date_range": "2022-09-08 to 2025-10-11"
+          },
+          "updated_at": { "type": "string (datetime)", "visualization_use": "data_freshness" }
+        },
+        "engagement": {
+          "like_count": {
+            "type": "number",
+            "visualization_use": "engagement_metrics, top_posts, bubble_chart",
+            "range": "32-503"
+          }
+        },
+        "ai_analytics": {
+          "sentiment": {
+            "type": "string",
+            "values": ["Positive", "Negative", "Neutral"],
+            "visualization_use": "sentiment_pie_chart, sentiment_trends, filter"
+          },
+          "urgency_level": {
+            "type": "number",
+            "range": "50-90",
+            "average": 71.25,
+            "visualization_use": "priority_dashboard, alert_system, heatmap, color_coding"
+          },
+          "topic_classification": {
+            "type": "string",
+            "values": [
+              "Social and Economy",
+              "Government and Public Policy",
+              "Infrastructure and Transportation",
+              "Safety and Crime"
+            ],
+            "visualization_use": "topic_bar_chart, filter, treemap, sankey_diagram"
+          },
+          "affected_region": {
+            "type": "string",
+            "values": ["DKI Jakarta"],
+            "visualization_use": "geographic_map, regional_filter",
+            "note": "Currently limited to one value - needs enhancement"
+          },
+          "target_audience": {
+            "type": "array[string]",
+            "visualization_use": "audience_segmentation, network_diagram"
+          },
+          "contextual_content": {
+            "type": "string (Indonesian)",
+            "visualization_use": "summary_display, tooltip, detail_view"
+          },
+          "contextual_keywords": {
+            "type": "array[string]",
+            "visualization_use": "keyword_cloud, theme_tracking, tag_filter"
+          },
+          "list_word": {
+            "type": "array[string]",
+            "visualization_use": "keyword_extraction, search"
+          }
+        },
+        "system": {
+          "channel": { "type": "string", "value": "tiktok" },
+          "worker": { "type": "number" }
+        }
+      }
+    },
+    "news_data": {
+      "purpose": "News articles with AI analysis",
+      "document_count": 111,
+      "fields": {
+        "identification": {
+          "_id": { "type": "ObjectId", "visualization_use": "unique_key" },
+          "uuid": { "type": "string", "visualization_use": "unique_identifier" },
+          "link_post": { "type": "string", "visualization_use": "article_link" }
+        },
+        "content": {
+          "title": { "type": "string", "visualization_use": "headline_display, search" },
+          "description": { "type": "string", "visualization_use": "article_preview" },
+          "post_caption": { "type": "string", "visualization_use": "summary_display" },
+          "post_media_link": { "type": "string (array as string)", "visualization_use": "media_gallery" }
+        },
+        "source": {
+          "username": { "type": "string", "visualization_use": "source_name, filter" },
+          "creator": { "type": "string", "visualization_use": "author_name" }
+        },
+        "temporal": {
+          "post_created_at": {
+            "type": "string (datetime)",
+            "visualization_use": "time_series, date_filter, trend_analysis",
+            "date_range": "2022-12-09 to 2025-10-12"
+          },
+          "updated_at": { "type": "string (datetime)", "visualization_use": "data_freshness" }
+        },
+        "social": {
+          "post_hashtags": { "type": "array[string]", "visualization_use": "tag_filter" },
+          "post_mentions": { "type": "array[string]", "visualization_use": "mention_tracking" },
+          "list_word": { "type": "array[string]", "visualization_use": "keyword_cloud" }
+        },
+        "ai_analytics": {
+          "sentiment": {
+            "type": "string",
+            "values": ["Positive", "Negative", "Neutral"],
+            "visualization_use": "sentiment_analysis, filter, trends"
+          },
+          "urgency_level": {
+            "type": "number",
+            "range": "10-90",
+            "average": 48.65,
+            "visualization_use": "priority_sorting, color_coding, alert_threshold"
+          },
+          "topic_classification": {
+            "type": "string",
+            "values": [
+              "Social and Economy",
+              "Infrastructure and Transportation",
+              "Government and Public Policy",
+              "Technology and Innovation",
+              "Environment and Disaster",
+              "Safety and Crime",
+              "Education and Culture",
+              "Ecology and Green Spaces"
+            ],
+            "visualization_use": "topic_distribution, filter, category_chart"
+          },
+          "affected_region": {
+            "type": "string",
+            "values": ["DKI Jakarta"],
+            "visualization_use": "geographic_filter"
+          },
+          "target_audience": {
+            "type": "array[string]",
+            "visualization_use": "audience_breakdown, segmentation"
+          },
+          "contextual_content": {
+            "type": "string",
+            "visualization_use": "AI_summary, detail_panel"
+          },
+          "contextual_keywords": {
+            "type": "array[string]",
+            "visualization_use": "keyword_trends, tag_cloud"
+          }
+        },
+        "advanced_metrics": {
+          "engagement_rate": {
+            "type": "number",
+            "range": "87-119",
+            "visualization_use": "performance_score, leaderboard, scatter_plot"
+          },
+          "influence_score": {
+            "type": "number",
+            "range": "0.222-8.009",
+            "visualization_use": "impact_measurement, bubble_size, ranking"
+          },
+          "reach_score": {
+            "type": "number",
+            "range": "0.1-4",
+            "visualization_use": "audience_size, chart_axis"
+          },
+          "viral_score": {
+            "type": "number",
+            "current_range": "0",
+            "visualization_use": "virality_tracking"
+          }
+        },
+        "system": {
+          "channel": { "type": "string", "value": "news" }
+        }
+      }
+    },
+    "insight_tiktok_jakarta": {
+      "purpose": "Daily aggregated TikTok insights",
+      "document_count": 1,
+      "update_frequency": "daily",
+      "fields": {
+        "identification": {
+          "_id": { "type": "ObjectId" },
+          "id": { "type": "string (date YYYY-MM-DD)" },
+          "date": { "type": "string (YYYY-MM-DD)" }
+        },
+        "aggregated_data": {
+          "insight": {
+            "type": "array[object]",
+            "structure": {
+              "main_issue": { "type": "string (Indonesian)", "visualization_use": "issue_title" },
+              "problem": { "type": "string (Indonesian)", "visualization_use": "problem_description" },
+              "suggestion": { "type": "string (Indonesian)", "visualization_use": "recommendations" },
+              "urgency_score": { "type": "number (0-100)", "visualization_use": "priority_sorting" },
+              "topic": { "type": "string", "visualization_use": "category_grouping" }
+            },
+            "visualization_use": "insight_cards, priority_queue, recommendation_tracker"
+          },
+          "total_hashtags": {
+            "type": "array[object]",
+            "structure": { "name": "string", "total": "number" },
+            "visualization_use": "hashtag_bar_chart, trending_tags"
+          },
+          "total_location": {
+            "type": "array[object]",
+            "structure": { "name": "string", "total": "number" },
+            "visualization_use": "location_distribution, map_overlay"
+          },
+          "total_mentions": {
+            "type": "array[object]",
+            "structure": { "name": "string", "total": "number" },
+            "visualization_use": "mention_leaderboard, network_diagram"
+          }
+        }
+      }
+    },
+    "insight_news_jakarta": {
+      "purpose": "Daily aggregated news insights",
+      "document_count": 1,
+      "update_frequency": "daily",
+      "fields": {
+        "identification": {
+          "_id": { "type": "ObjectId" },
+          "id": { "type": "string (date YYYY-MM-DD)" },
+          "date": { "type": "string (YYYY-MM-DD)" }
+        },
+        "aggregated_data": {
+          "insight": {
+            "type": "array[object]",
+            "structure": {
+              "main_issue": { "type": "string (English)", "visualization_use": "issue_headline" },
+              "problem": { "type": "string (English)", "visualization_use": "problem_analysis" },
+              "suggestion": { "type": "string (English)", "visualization_use": "action_items" },
+              "urgency_score": { "type": "number (0-100)", "visualization_use": "priority_indicator" },
+              "topic": { "type": "string", "visualization_use": "topic_tag" }
+            },
+            "visualization_use": "strategic_insight_dashboard, policy_recommendations"
+          }
+        }
+      }
+    }
+  },
+  "visualization_recommendations": {
+    "dashboards": {
+      "executive_overview": {
+        "priority": "high",
+        "update_frequency": "real-time",
+        "data_sources": ["tiktok_data", "news_data"],
+        "key_fields": [
+          "urgency_level (>= 80 for critical)",
+          "sentiment",
+          "topic_classification",
+          "post_created_at (last 24h)"
+        ],
+        "components": [
+          { "type": "KPI_card", "metric": "critical_issues_count", "filter": "urgency_level >= 80" },
+          { "type": "gauge", "metric": "public_sentiment", "calculation": "positive_count / total * 100" },
+          { "type": "bar_chart", "metric": "top_topics", "limit": 10 },
+          { "type": "area_chart", "metric": "urgency_trend", "timeframe": "7_days" }
+        ]
+      },
+      "unified_monitoring": {
+        "priority": "high",
+        "update_frequency": "5_minutes",
+        "data_sources": ["tiktok_data", "news_data"],
+        "key_fields": [
+          "urgency_level (>= 70 for urgent)",
+          "post_created_at",
+          "like_count",
+          "engagement_rate",
+          "sentiment",
+          "topic_classification",
+          "affected_region"
+        ],
+        "components": [
+          { "type": "metric_grid", "metrics": ["total_posts", "avg_urgency", "critical_negative", "citizen_reach"] },
+          { "type": "line_chart", "metric": "growth_over_time", "series": ["news", "tiktok", "total"] },
+          { "type": "pie_chart", "metric": "sentiment_distribution", "filter": "urgency_level >= 70" },
+          { "type": "horizontal_bar", "metric": "priority_issues", "color_by": "urgency_level" },
+          { "type": "multi_line", "metric": "sentiment_trends", "series": ["positive", "negative", "neutral"] },
+          { "type": "activity_feed", "metric": "recent_urgent_posts", "filter": "urgency_level >= 70" }
+        ]
+      },
+      "regional_heatmap": {
+        "priority": "medium",
+        "update_frequency": "daily",
+        "data_sources": ["tiktok_data", "news_data"],
+        "key_fields": ["affected_region", "urgency_level", "topic_classification"],
+        "components": [
+          { "type": "choropleth_map", "metric": "issue_density_by_region" },
+          { "type": "color_coding", "based_on": "urgency_level" }
+        ],
+        "note": "Requires enhanced regional data collection"
+      },
+      "engagement_analytics": {
+        "priority": "high",
+        "update_frequency": "hourly",
+        "data_sources": {
+          "tiktok": ["like_count", "username", "post_hashtags"],
+          "news": ["engagement_rate", "influence_score", "reach_score"]
+        },
+        "components": [
+          { "type": "leaderboard", "metric": "top_engaged_posts", "limit": 20 },
+          { "type": "bubble_chart", "x": "reach_score", "y": "influence_score", "size": "engagement_rate" },
+          { "type": "bar_chart", "metric": "top_hashtags", "limit": 10 },
+          { "type": "table", "metric": "influencer_rankings" }
+        ]
+      },
+      "ai_insights": {
+        "priority": "high",
+        "update_frequency": "daily",
+        "data_sources": ["insight_tiktok_jakarta", "insight_news_jakarta"],
+        "key_fields": ["insight.main_issue", "insight.problem", "insight.suggestion", "insight.urgency_score"],
+        "components": [
+          { "type": "card_grid", "metric": "daily_insights", "sort_by": "urgency_score" },
+          { "type": "priority_list", "metric": "top_issues", "limit": 5 },
+          { "type": "recommendation_panel", "metric": "suggestions" }
+        ]
+      },
+      "topic_analysis": {
+        "priority": "medium",
+        "update_frequency": "daily",
+        "data_sources": ["tiktok_data", "news_data"],
+        "key_fields": ["topic_classification", "urgency_level", "sentiment", "post_created_at"],
+        "components": [
+          { "type": "treemap", "metric": "topic_distribution" },
+          { "type": "sankey", "flow": "topic -> sentiment -> region" },
+          { "type": "scatter", "x": "urgency_level", "y": "engagement", "group_by": "topic" },
+          { "type": "stacked_bar", "metric": "sentiment_by_topic" }
+        ]
+      },
+      "keyword_trends": {
+        "priority": "medium",
+        "update_frequency": "hourly",
+        "data_sources": ["tiktok_data", "news_data"],
+        "key_fields": ["contextual_keywords", "post_hashtags", "list_word", "post_created_at"],
+        "components": [
+          { "type": "word_cloud", "metric": "top_keywords", "limit": 50 },
+          { "type": "network_graph", "metric": "keyword_associations" },
+          { "type": "timeline", "metric": "keyword_emergence" },
+          { "type": "bar_chart", "metric": "trending_hashtags", "timeframe": "24h" }
+        ]
+      }
+    },
+    "chart_types": {
+      "time_series": {
+        "applicable_fields": ["post_created_at", "urgency_level", "sentiment", "like_count", "engagement_rate"],
+        "chart_options": ["line_chart", "area_chart", "multi_line", "heatmap_calendar"]
+      },
+      "categorical": {
+        "applicable_fields": ["topic_classification", "sentiment", "affected_region"],
+        "chart_options": ["bar_chart", "pie_chart", "donut_chart", "treemap"]
+      },
+      "hierarchical": {
+        "applicable_fields": ["topic_classification + sentiment", "region + topic"],
+        "chart_options": ["sunburst", "treemap", "sankey"]
+      },
+      "relational": {
+        "applicable_fields": ["post_hashtags", "post_mentions", "contextual_keywords"],
+        "chart_options": ["network_graph", "chord_diagram", "force_directed"]
+      },
+      "comparison": {
+        "applicable_fields": ["urgency_level", "engagement metrics", "influence_score"],
+        "chart_options": ["scatter_plot", "bubble_chart", "radar_chart", "box_plot"]
+      },
+      "geographic": {
+        "applicable_fields": ["affected_region"],
+        "chart_options": ["choropleth", "heat_map", "pin_map"],
+        "note": "Limited by current data granularity"
+      }
+    }
+  },
+  "common_filters": {
+    "urgency_thresholds": {
+      "critical": "urgency_level >= 80",
+      "urgent": "urgency_level >= 70",
+      "high": "urgency_level >= 60",
+      "medium": "urgency_level >= 40",
+      "low": "urgency_level < 40"
+    },
+    "time_ranges": {
+      "last_24h": "post_created_at >= Date.now() - 86400000",
+      "last_7_days": "post_created_at >= Date.now() - 604800000",
+      "last_30_days": "post_created_at >= Date.now() - 2592000000",
+      "custom": "post_created_at >= startDate && post_created_at <= endDate"
+    },
+    "sentiment_filters": {
+      "positive": "sentiment === 'Positive'",
+      "negative": "sentiment === 'Negative'",
+      "neutral": "sentiment === 'Neutral'"
+    },
+    "topic_filters": {
+      "type": "multi-select",
+      "field": "topic_classification",
+      "options": [
+        "Social and Economy",
+        "Infrastructure and Transportation",
+        "Government and Public Policy",
+        "Technology and Innovation",
+        "Environment and Disaster",
+        "Safety and Crime",
+        "Education and Culture",
+        "Ecology and Green Spaces",
+        "Tourism and Entertainment"
+      ]
+    }
+  },
+  "aggregation_patterns": {
+    "daily_rollup": {
+      "group_by": "$substr(post_created_at, 0, 10)",
+      "metrics": ["count", "avg(urgency_level)", "sentiment_distribution"]
+    },
+    "topic_summary": {
+      "group_by": "topic_classification",
+      "metrics": ["count", "avg(urgency_level)", "max(urgency_level)", "sentiment_counts"]
+    },
+    "regional_summary": {
+      "group_by": "affected_region",
+      "metrics": ["count", "avg(urgency_level)", "critical_count"]
+    },
+    "engagement_rollup": {
+      "tiktok": "sum(like_count), avg(like_count)",
+      "news": "avg(engagement_rate), avg(influence_score), avg(reach_score)"
+    }
+  },
+  "api_endpoints": {
+    "/api/unified-monitoring": {
+      "method": "GET",
+      "parameters": ["dateFrom", "dateTo", "page", "itemsPerPage"],
+      "returns": {
+        "metrics": "Overall statistics",
+        "growthData": "Time series data",
+        "sentimentDistribution": "Sentiment breakdown (urgent only)",
+        "topicDistribution": "Topic breakdown (urgent only)",
+        "priorityIssues": "Top issues with urgency scores",
+        "regionalDistribution": "Regional breakdown (urgent only)",
+        "urgencyDistribution": "High/medium/low counts",
+        "sentimentTrends": "Daily sentiment over time",
+        "topPosts": "Top 10 critical posts",
+        "todayActivity": "Hourly activity + topics",
+        "recentActivity": "Paginated urgent posts"
+      }
+    },
+    "/api/dashboard": {
+      "method": "GET",
+      "parameters": ["source (news|tiktok)", "page", "itemsPerPage"],
+      "returns": {
+        "stats": "Source-specific metrics",
+        "data": "Paginated content",
+        "insights": "Latest daily insights",
+        "pagination": "Page info"
+      }
+    },
+    "/api/trending": {
+      "method": "GET",
+      "parameters": ["source (news|tiktok)"],
+      "returns": {
+        "tiktok": "Latest insight document with hashtags/locations/mentions",
+        "news": "Top trending topics by urgency"
+      }
+    }
+  },
+  "data_quality_notes": {
+    "strengths": [
+      "Consistent schema across collections",
+      "Rich AI-generated metadata",
+      "Multi-dimensional analytics",
+      "Daily insight aggregations"
+    ],
+    "limitations": [
+      "Small TikTok dataset (12 docs)",
+      "Limited regional granularity (all 'DKI Jakarta')",
+      "Inconsistent date formats",
+      "Missing some engagement metrics (comments, shares, views on TikTok)"
+    ],
+    "recommendations": [
+      "Increase TikTok data collection frequency",
+      "Enhance regional extraction (South/North/East/West/Central Jakarta)",
+      "Standardize date format to ISO 8601",
+      "Add computed fields: engagement_score, trend_velocity",
+      "Create historical insight archive"
+    ]
+  }
+}
