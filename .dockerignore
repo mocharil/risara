@@ -1,0 +1,64 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js build output
+.next
+out
+
+# Production build
+build
+dist
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Credentials and secrets
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!next.config.json
+!tailwind.config.json
+skilled-compass.json
+credentials.json
+service-account.json
+
+# Testing
+coverage
+.nyc_output
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Documentation
+README.md
+CHANGELOG.md
+LICENSE
+
+# Misc
+.vercel
+.cache
+*.log

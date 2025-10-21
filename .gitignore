@@ -38,3 +38,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# credentials and secrets
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!next.config.json
+!tailwind.config.json
+skilled-compass.json
+credentials.json
+service-account.json

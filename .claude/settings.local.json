@@ -5,7 +5,8 @@
       "Bash(tree \"C:\\Users\\Aril Indra Permana\\Script\\Risara - Dummy\" -L 3 -I node_modules)",
       "Bash(find \"/c/Users/Aril Indra Permana/Script/Risara - Dummy/src/app/(dashboard)\" -type f -name \"page.tsx\")",
       "Bash(dir:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "ask": []

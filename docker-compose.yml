@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  risara-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: risara-demo
+    ports:
+      - "3000:3000"
+    environment:
+      # Use dummy data by default in Docker
+      - USE_DUMMY_DATA=true
+      - NEXT_PUBLIC_USE_DUMMY_DATA=true
+
+      # MongoDB configuration (optional - only if not using dummy data)
+      - MONGODB_URI=${MONGODB_URI:-}
+      - MONGODB_DB=${MONGODB_DB:-risara}
+
+      # Gemini AI configuration (optional - only if not using dummy data)
+      - GEMINI_PROJECT_ID=${GEMINI_PROJECT_ID:-}
+      - GEMINI_CREDS_PATH=${GEMINI_CREDS_PATH:-/app/credentials/skilled-compass.json}
+
+      # Next.js configuration
+      - NODE_ENV=production
+      - HOSTNAME=0.0.0.0
+      - PORT=3000
+
+    # Optional: Mount credentials file if using real AI features
+    # volumes:
+    #   - ./skilled-compass.json:/app/credentials/skilled-compass.json:ro
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {if(r.statusCode !== 200) throw new Error(r.statusCode)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  default:
+    name: risara-network
