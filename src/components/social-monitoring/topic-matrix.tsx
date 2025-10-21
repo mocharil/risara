@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Target, Info } from 'lucide-react';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Cell, ZAxis } from 'recharts';
 
-interface TopicBubble {
+export interface TopicBubble {
   topic: string;
   urgency: number;
   frequency: number;
@@ -16,19 +16,21 @@ interface TopicBubble {
   platforms: string[];
 }
 
+export interface TopicMatrixData {
+  bubbles: TopicBubble[];
+  stats: {
+    totalTopics: number;
+    avgUrgency: number;
+    criticalTopics: number;
+  };
+  thresholds: {
+    urgency: { high: number; medium: number };
+    frequency: { high: number; medium: number };
+  };
+}
+
 interface TopicMatrixProps {
-  data: {
-    bubbles: TopicBubble[];
-    stats: {
-      totalTopics: number;
-      avgUrgency: number;
-      criticalTopics: number;
-    };
-    thresholds: {
-      urgency: { high: number; medium: number };
-      frequency: { high: number; medium: number };
-    };
-  } | null;
+  data: TopicMatrixData | null;
   isLoading: boolean;
 }
 

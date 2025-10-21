@@ -593,7 +593,7 @@ const determineSentiment = (bias: string | undefined): string => {
 // ========================================
 
 export const generateEnhancedNewsArticles = (count: number = CONFIG.news.count) => {
-  const articles = [];
+  const articles: any[] = [];
 
   for (let i = 0; i < count; i++) {
     const topic = randomChoice(NEWS_TOPICS);
@@ -701,7 +701,7 @@ export const generateEnhancedNewsArticles = (count: number = CONFIG.news.count) 
 // ========================================
 
 export const generateEnhancedTikTokPosts = (count: number = CONFIG.tiktok.count) => {
-  const posts = [];
+  const posts: any[] = [];
 
   const usernames = [
     'jakarta_update', 'warga_jkt', 'citizen_voice', 'jkt_monitoring',
@@ -787,7 +787,7 @@ export const generateEnhancedTikTokPosts = (count: number = CONFIG.tiktok.count)
 // ========================================
 
 export const generateEnhancedChatLogs = (count: number = CONFIG.chatLogs.count) => {
-  const logs = [];
+  const logs: any[] = [];
 
   for (let i = 0; i < count; i++) {
     const template = randomChoice(CHAT_TEMPLATES);
@@ -1108,7 +1108,7 @@ const generateSpecificTikTokPosts = () => {
 
 // Generate additional posts to create denser network
 const generateNetworkDensePosts = () => {
-  const networkPosts = [];
+  const networkPosts: any[] = [];
   const now = new Date('2025-10-21T10:00:00Z');
 
   // Create multiple posts for each trending hashtag to ensure they appear as nodes
@@ -1151,7 +1151,7 @@ const generateNetworkDensePosts = () => {
       const postDate = new Date(now.getTime() - Math.random() * 7 * 24 * 60 * 60 * 1000);
 
       // Select 2-3 random mentions
-      const selectedMentions = [];
+      const selectedMentions: string[] = [];
       const numMentions = Math.floor(Math.random() * 3) + 1;
       for (let m = 0; m < numMentions; m++) {
         const randomMention = trendingMentions[Math.floor(Math.random() * trendingMentions.length)];
@@ -1218,7 +1218,7 @@ const generateNetworkDensePosts = () => {
       const postDate = new Date(now.getTime() - Math.random() * 7 * 24 * 60 * 60 * 1000);
 
       // Select 2-3 hashtags
-      const selectedHashtags = [];
+      const selectedHashtags: string[] = [];
       const numHashtags = Math.floor(Math.random() * 2) + 2;
       for (let h = 0; h < numHashtags; h++) {
         const randomHashtag = trendingHashtags[Math.floor(Math.random() * trendingHashtags.length)];

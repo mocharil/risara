@@ -4,8 +4,6 @@
 // This file contains comprehensive dummy data for all features
 // to enable full demonstration without database dependency
 
-import { faker } from '@faker-js/faker/locale/id_ID';
-
 // ========================================
 // 1. LANDING PAGE STATISTICS
 // ========================================

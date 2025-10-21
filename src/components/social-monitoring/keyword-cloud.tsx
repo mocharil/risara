@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-interface Keyword {
+export interface Keyword {
   keyword: string;
   count: number;
   type: 'hashtag' | 'keyword';
@@ -21,16 +21,18 @@ interface Keyword {
   sentiment?: string;
 }
 
+export interface KeywordCloudData {
+  keywords: Keyword[];
+  stats: {
+    total: number;
+    totalMentions: number;
+    avgMentions: number;
+    highUrgencyKeywords: number;
+  };
+}
+
 interface KeywordCloudProps {
-  data: {
-    keywords: Keyword[];
-    stats: {
-      total: number;
-      totalMentions: number;
-      avgMentions: number;
-      highUrgencyKeywords: number;
-    };
-  } | null;
+  data: KeywordCloudData | null;
   isLoading: boolean;
 }
 

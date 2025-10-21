@@ -7,21 +7,23 @@ import { FileText, RefreshCw, Calendar, TrendingUp, AlertTriangle } from 'lucide
 import { Button } from '@/components/ui/button';
 import ReactMarkdown from 'react-markdown';
 
-interface ExecutiveSummaryProps {
-  data: {
-    summary: string;
-    metadata: {
-      date: string;
-      totalInsights: number;
-      criticalIssues: number;
-      highPriorityIssues: number;
-      avgUrgency: number;
-      byPlatform: {
-        tiktok: number;
-        news: number;
-      };
+export interface ExecutiveSummaryData {
+  summary: string;
+  metadata: {
+    date: string;
+    totalInsights: number;
+    criticalIssues: number;
+    highPriorityIssues: number;
+    avgUrgency: number;
+    byPlatform: {
+      tiktok: number;
+      news: number;
     };
-  } | null;
+  };
+}
+
+interface ExecutiveSummaryProps {
+  data: ExecutiveSummaryData | null;
   isLoading: boolean;
   onRefresh?: () => void;
 }

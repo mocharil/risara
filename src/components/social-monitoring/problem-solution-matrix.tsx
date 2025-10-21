@@ -21,7 +21,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-interface ProblemSolutionItem {
+export interface ProblemSolutionItem {
   topic: string;
   mainIssue: string;
   problem: string;
@@ -30,19 +30,21 @@ interface ProblemSolutionItem {
   platform: string;
 }
 
+export interface ProblemSolutionData {
+  insights: ProblemSolutionItem[];
+  stats: {
+    total: number;
+    critical: number;
+    high: number;
+    avgUrgency: number;
+  };
+  filters: {
+    topics: string[];
+  };
+}
+
 interface ProblemSolutionMatrixProps {
-  data: {
-    insights: ProblemSolutionItem[];
-    stats: {
-      total: number;
-      critical: number;
-      high: number;
-      avgUrgency: number;
-    };
-    filters: {
-      topics: string[];
-    };
-  } | null;
+  data: ProblemSolutionData | null;
   isLoading: boolean;
   onFilterChange?: (topic: string) => void;
 }

@@ -21,12 +21,13 @@ const topicImages: { [key: string]: string } = {
   "Government and Public Policy": "/government_and_public_policy.png"
 };
 
-const getTopicImage = (topic: string): string => {
+const getTopicImage = (topic: string | undefined): string => {
+  if (!topic) return "/risara.png";
   return topicImages[topic] || "/risara.png";
 };
 
 // Function to format text with bold sections
-const formatText = (text: string): React.ReactNode => {
+const formatText = (text: string | undefined): React.ReactNode => {
   if (!text) return null;
   const parts = text.split('**');
   return parts.map((part, index) => 

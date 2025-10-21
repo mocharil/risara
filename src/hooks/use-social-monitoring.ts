@@ -1,5 +1,11 @@
 // src/hooks/use-social-monitoring.ts
 import { useState, useEffect, useCallback } from 'react';
+import type { UrgencyData } from '@/components/social-monitoring/urgency-dashboard';
+import type { ExecutiveSummaryData } from '@/components/social-monitoring/executive-summary';
+import type { CrisisTimelineData } from '@/components/social-monitoring/crisis-timeline';
+import type { TopicMatrixData } from '@/components/social-monitoring/topic-matrix';
+import type { ProblemSolutionData } from '@/components/social-monitoring/problem-solution-matrix';
+import type { KeywordCloudData } from '@/components/social-monitoring/keyword-cloud';
 
 interface UseDataFetchOptions {
   endpoint: string;
@@ -53,14 +59,14 @@ export function useDataFetch<T>(options: UseDataFetchOptions) {
 
 // Hook for Urgency Dashboard
 export function useUrgencyData() {
-  return useDataFetch({
+  return useDataFetch<UrgencyData>({
     endpoint: '/api/social-monitoring/urgency'
   });
 }
 
 // Hook for Executive Summary
 export function useExecutiveSummary(date?: string) {
-  return useDataFetch({
+  return useDataFetch<ExecutiveSummaryData>({
     endpoint: '/api/social-monitoring/executive-summary',
     params: date ? { date } : {}
   });
@@ -75,7 +81,7 @@ export function useCrisisTimeline(filters?: {
 }) {
   const [currentFilters, setCurrentFilters] = useState(filters || {});
 
-  const result = useDataFetch({
+  const result = useDataFetch<CrisisTimelineData>({
     endpoint: '/api/social-monitoring/crisis-timeline',
     params: {
       minUrgency: currentFilters.minUrgency || 70,
@@ -94,7 +100,7 @@ export function useCrisisTimeline(filters?: {
 
 // Hook for Topic Matrix
 export function useTopicMatrix() {
-  return useDataFetch({
+  return useDataFetch<TopicMatrixData>({
     endpoint: '/api/social-monitoring/topic-matrix'
   });
 }
@@ -107,7 +113,7 @@ export function useProblemSolution(filters?: {
 }) {
   const [currentFilters, setCurrentFilters] = useState(filters || {});
 
-  const result = useDataFetch({
+  const result = useDataFetch<ProblemSolutionData>({
     endpoint: '/api/social-monitoring/problem-solution',
     params: {
       minUrgency: currentFilters.minUrgency || 0,
@@ -130,7 +136,7 @@ export function useKeywords(filters?: {
 }) {
   const [currentFilters, setCurrentFilters] = useState(filters || {});
 
-  const result = useDataFetch({
+  const result = useDataFetch<KeywordCloudData>({
     endpoint: '/api/social-monitoring/keywords',
     params: {
       limit: currentFilters.limit || 50,

@@ -86,7 +86,7 @@ export async function GET(request: NextRequest) {
         },
         {
           $match: {
-            _id: { $ne: null, $ne: '' } // Remove null or empty keywords
+            _id: { $nin: [null, ''] } // Remove null or empty keywords
           }
         },
         {
@@ -122,7 +122,7 @@ export async function GET(request: NextRequest) {
           },
           {
             $match: {
-              _id: { $ne: null, $ne: '' }
+              _id: { $nin: [null, ''] }
             }
           },
           {

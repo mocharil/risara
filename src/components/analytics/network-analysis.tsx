@@ -23,6 +23,7 @@ interface NetworkData {
     label: string;
     type: string;
     weight?: number;
+    cluster?: number;
   }>;
   links: Array<{
     source: string;
@@ -58,7 +59,7 @@ interface Summary {
 }
 
 interface NetworkAnalysisProps {
-  data: AnalyticsData;
+  data?: AnalyticsData | null;
 }
 
 // Constants and Helpers

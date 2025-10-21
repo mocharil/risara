@@ -14,7 +14,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-interface CrisisEvent {
+export interface CrisisEvent {
   _id: string;
   title: string;
   urgency: number;
@@ -29,20 +29,22 @@ interface CrisisEvent {
   targetAudience?: string[];
 }
 
+export interface CrisisTimelineData {
+  events: CrisisEvent[];
+  stats: {
+    total: number;
+    critical: number;
+    high: number;
+    avgUrgency: number;
+  };
+  filters: {
+    topics: string[];
+    platforms: string[];
+  };
+}
+
 interface CrisisTimelineProps {
-  data: {
-    events: CrisisEvent[];
-    stats: {
-      total: number;
-      critical: number;
-      high: number;
-      avgUrgency: number;
-    };
-    filters: {
-      topics: string[];
-      platforms: string[];
-    };
-  } | null;
+  data: CrisisTimelineData | null;
   isLoading: boolean;
   onFilterChange?: (filters: { topic?: string; platform?: string }) => void;
 }

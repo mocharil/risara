@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Gauge, AlertTriangle, AlertCircle, Info, CheckCircle } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 
-interface UrgencyData {
+export interface UrgencyData {
   overall: {
     avgUrgency: number;
     critical: number;
