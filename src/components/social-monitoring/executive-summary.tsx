@@ -3,7 +3,8 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { FileText, RefreshCw, Calendar, TrendingUp, AlertTriangle } from 'lucide-react';
+import { StatsCard } from '@/components/dashboard/stats-card';
+import { FileText, RefreshCw, Calendar, TrendingUp, AlertTriangle, Activity, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ReactMarkdown from 'react-markdown';
 
@@ -73,69 +74,54 @@ export function ExecutiveSummary({ data, isLoading, onRefresh }: ExecutiveSummar
     <div className="space-y-6">
       {/* Metadata Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 text-gray-600 mb-2">
-              <Calendar className="h-4 w-4" />
-              <span className="text-xs font-medium">Date</span>
-            </div>
-            <div className="text-lg font-bold">
-              {new Date(metadata.date).toLocaleDateString('id-ID', {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric'
-              })}
-            </div>
-          </CardContent>
-        </Card>
+        <StatsCard
+          title="Report Date"
+          value={new Date(metadata.date).toLocaleDateString('id-ID', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          })}
+          description="Analysis period"
+          icon={Calendar}
+          color="text-gray-900"
+          tooltip="Date of this executive summary report"
+        />
 
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 text-gray-600 mb-2">
-              <AlertTriangle className="h-4 w-4" />
-              <span className="text-xs font-medium">Critical Issues</span>
-            </div>
-            <div className="text-lg font-bold text-red-600">{metadata.criticalIssues}</div>
-            <div className="text-xs text-gray-500">Urgency ≥ 80</div>
-          </CardContent>
-        </Card>
+        <StatsCard
+          title="Critical Issues"
+          value={metadata.criticalIssues.toString()}
+          description="Urgency ≥ 80"
+          icon={AlertCircle}
+          color="text-red-600"
+          tooltip="Number of critical issues requiring immediate attention"
+        />
 
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 text-gray-600 mb-2">
-              <TrendingUp className="h-4 w-4" />
-              <span className="text-xs font-medium">Total Insights</span>
-            </div>
-            <div className="text-lg font-bold">{metadata.totalInsights}</div>
-            <div className="text-xs text-gray-500">
-              TikTok: {metadata.byPlatform.tiktok} | News: {metadata.byPlatform.news}
-            </div>
-          </CardContent>
-        </Card>
+        <StatsCard
+          title="Total Insights"
+          value={metadata.totalInsights.toString()}
+          description={`TikTok: ${metadata.byPlatform.tiktok} | News: ${metadata.byPlatform.news}`}
+          icon={TrendingUp}
+          color="text-blue-600"
+          tooltip="Total insights analyzed across all platforms"
+        />
 
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 text-gray-600 mb-2">
-              <span className="text-xs font-medium">Avg Urgency</span>
-            </div>
-            <div className="text-lg font-bold" style={{
-              color: metadata.avgUrgency >= 70 ? '#EF4444' : metadata.avgUrgency >= 50 ? '#F97316' : '#10B981'
-            }}>
-              {metadata.avgUrgency.toFixed(1)}
-            </div>
-            <div className="text-xs text-gray-500">/ 100</div>
-          </CardContent>
-        </Card>
+        <StatsCard
+          title="Avg Urgency"
+          value={metadata.avgUrgency.toFixed(1)}
+          description="Out of 100"
+          icon={Activity}
+          color={metadata.avgUrgency >= 70 ? 'text-red-600' : metadata.avgUrgency >= 50 ? 'text-orange-600' : 'text-green-600'}
+          tooltip="Average urgency level across all monitored content"
+        />
 
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 text-gray-600 mb-2">
-              <span className="text-xs font-medium">High Priority</span>
-            </div>
-            <div className="text-lg font-bold text-orange-600">{metadata.highPriorityIssues}</div>
-            <div className="text-xs text-gray-500">Urgency 60-79</div>
-          </CardContent>
-        </Card>
+        <StatsCard
+          title="High Priority"
+          value={metadata.highPriorityIssues.toString()}
+          description="Urgency 60-79"
+          icon={AlertTriangle}
+          color="text-orange-600"
+          tooltip="Number of high priority issues requiring attention"
+        />
       </div>
 
       {/* Summary Card */}

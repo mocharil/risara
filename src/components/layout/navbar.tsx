@@ -63,8 +63,10 @@ export function Navbar() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link href="/dashboard" legacyBehavior passHref>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${
-                    isActive('/dashboard') ? 'bg-accent text-accent-foreground' : ''
+                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} relative ${
+                    isActive('/dashboard')
+                      ? 'bg-blue-50 text-blue-700 font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-blue-600'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                   }`}>
                     <LayoutDashboard className="mr-2 h-4 w-4" />
                     Dashboard
@@ -73,8 +75,10 @@ export function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/social-monitoring" legacyBehavior passHref>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${
-                    isActive('/social-monitoring') ? 'bg-accent text-accent-foreground' : ''
+                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} relative ${
+                    isActive('/social-monitoring')
+                      ? 'bg-red-50 text-red-700 font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-red-600'
+                      : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
                   }`}>
                     <Activity className="mr-2 h-4 w-4" />
                     Social Monitoring
@@ -83,8 +87,10 @@ export function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/network-analysis" legacyBehavior passHref>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${
-                    isActive('/network-analysis') ? 'bg-accent text-accent-foreground' : ''
+                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} relative ${
+                    isActive('/network-analysis')
+                      ? 'bg-purple-50 text-purple-700 font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-purple-600'
+                      : 'text-gray-700 hover:text-purple-600 hover:bg-gray-50'
                   }`}>
                     <Share2 className="mr-2 h-4 w-4" />
                     Network Analysis
@@ -93,8 +99,10 @@ export function Navbar() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/citizen-engagement" legacyBehavior passHref>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${
-                    isActive('/citizen-engagement') ? 'bg-accent text-accent-foreground' : ''
+                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} relative ${
+                    isActive('/citizen-engagement')
+                      ? 'bg-green-50 text-green-700 font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-green-600'
+                      : 'text-gray-700 hover:text-green-600 hover:bg-gray-50'
                   }`}>
                     <MessagesSquare className="mr-2 h-4 w-4" />
                     Citizen Engagement

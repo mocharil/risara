@@ -92,53 +92,68 @@ export default function SocialMonitoringPage() {
   return (
     <div className="p-8 space-y-6 bg-gray-50 min-h-screen">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 bg-red-100 rounded-lg">
-              <AlertOctagon className="h-6 w-6 text-red-600" />
+      <div className="flex flex-col gap-4">
+        <div className="flex items-start justify-between">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-red-100 rounded-xl shadow-sm">
+              <AlertOctagon className="h-7 w-7 text-red-600" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Social Monitoring</h1>
-              <p className="text-sm text-gray-600">Real-time tracking & AI-powered insights for social media issues</p>
+              <h1 className="text-3xl font-bold text-gray-900 mb-1">Social Monitoring</h1>
+              <p className="text-sm text-gray-600 mb-3">Real-time tracking & AI-powered insights for social media issues</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white rounded-lg border border-gray-200 shadow-sm">
+                <Calendar className="h-4 w-4 text-gray-500" />
+                <span className="text-sm text-gray-700 font-medium">
+                  {data?.dateRange.from && new Date(data.dateRange.from).toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                  })} - {data?.dateRange.to && new Date(data.dateRange.to).toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                  })}
+                </span>
+              </div>
             </div>
           </div>
-          <p className="text-gray-500 flex items-center gap-2 ml-14">
-            <Calendar className="h-4 w-4" />
-            {data?.dateRange.from && new Date(data.dateRange.from).toLocaleDateString('id-ID')} -{' '}
-            {data?.dateRange.to && new Date(data.dateRange.to).toLocaleDateString('id-ID')}
-          </p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Select value={dateRange} onValueChange={setDateRange}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select period" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="7">Last 7 days</SelectItem>
-              <SelectItem value="14">Last 14 days</SelectItem>
-              <SelectItem value="30">Last 30 days</SelectItem>
-              <SelectItem value="90">Last 90 days</SelectItem>
-            </SelectContent>
-          </Select>
-          <Button
-            onClick={fetchData}
-            variant="outline"
-            disabled={isLoading}
-          >
-            Refresh
-          </Button>
+          <div className="flex items-center gap-3">
+            <Select value={dateRange} onValueChange={setDateRange}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select period" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="7">Last 7 days</SelectItem>
+                <SelectItem value="14">Last 14 days</SelectItem>
+                <SelectItem value="30">Last 30 days</SelectItem>
+                <SelectItem value="90">Last 90 days</SelectItem>
+              </SelectContent>
+            </Select>
+            <Button
+              onClick={fetchData}
+              variant="outline"
+              disabled={isLoading}
+            >
+              Refresh
+            </Button>
+          </div>
         </div>
       </div>
 
       {/* Tabs for Monitoring vs AI Analysis */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid w-full max-w-md grid-cols-2">
-          <TabsTrigger value="monitoring" className="flex items-center gap-2">
+        <TabsList className="inline-flex h-11 items-center justify-center rounded-xl bg-white p-1 text-gray-600 shadow-sm border border-gray-200">
+          <TabsTrigger
+            value="monitoring"
+            className="inline-flex items-center justify-center gap-2 rounded-lg px-6 py-2 text-sm font-medium ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-red-500 data-[state=active]:text-white data-[state=active]:shadow-sm"
+          >
             <BarChart3 className="h-4 w-4" />
             Urgent Issues
           </TabsTrigger>
-          <TabsTrigger value="ai-analysis" className="flex items-center gap-2">
+          <TabsTrigger
+            value="ai-analysis"
+            className="inline-flex items-center justify-center gap-2 rounded-lg px-6 py-2 text-sm font-medium ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-sm"
+          >
             <Sparkles className="h-4 w-4" />
             AI Analysis
           </TabsTrigger>

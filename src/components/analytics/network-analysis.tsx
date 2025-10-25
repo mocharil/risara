@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { AnalyticsData } from '@/types/analytics';
+import { useRenderLoopGuard } from '@/utils/react-guards';
 
 // Types
 interface NetworkData {
@@ -225,6 +226,9 @@ const renderFormattedText = (text: string) => {
   );
 };
 export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
+  // 🛡️ Guard against infinite re-render loops
+  useRenderLoopGuard('NetworkAnalysis', 50, 1000);
+
   // State declarations
   const [graphData, setGraphData] = useState<NetworkData>(initialGraphData);
   const [loading, setLoading] = useState(true);
@@ -240,6 +244,7 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
   const forceRef = useRef<any>(null);
   const fetchInProgress = useRef(false);
   const forceInitialized = useRef(false);
+  const graphDataRef = useRef<NetworkData>(initialGraphData);
 
   // Callbacks
   const getNodeColor = useCallback((node: any) => {
@@ -261,22 +266,23 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
 
       const responseData = await response.json();
 
-      setGraphData({
+      const newGraphData = {
         nodes: responseData.nodes.map((node: any) => ({
           id: node.id,
           label: node.data.label,
           type: node.type,
           weight: node.data.weight || 1,
-          size: 8
+          cluster: node.data.cluster || 0,
         })),
         links: responseData.edges.map((edge: any) => ({
           source: edge.source,
           target: edge.target,
-          value: 20,
-          distance: 60
         })),
         meta: responseData.meta
-      });
+      };
+
+      graphDataRef.current = newGraphData;
+      setGraphData(newGraphData);
     } catch (err) {
       console.error('Error fetching network data:', err);
       setError(err instanceof Error ? err.message : 'An error occurred');
@@ -410,11 +416,39 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
 
   const nodeLabel = useCallback((node: any) => node.label, []);
 
+  // ONE-TIME force setup - only runs when graph first loads
   const onEngineStop = useCallback(() => {
+    if (!forceRef.current) return;
+
+    // Only setup forces ONCE per data load
+    if (!forceInitialized.current && graphDataRef.current.nodes.length > 0) {
+      try {
+        forceRef.current.d3Force('collide', forceCollide((node: any) =>
+          (node.weight || 1) * 2.5
+        ).strength(0.9));
+
+        forceRef.current.d3Force('charge', forceManyBody()
+          .strength((node: any) => -500 - (node.weight || 1) * 30)
+          .distanceMax(600)
+        );
+
+        const linkForce = forceRef.current.d3Force('link');
+        if (linkForce) {
+          linkForce.distance(60).strength(0.3);
+        }
+
+        forceInitialized.current = true;
+      } catch (error) {
+        console.error('Error setting up force simulation:', error);
+      }
+    }
+
+    // Zoom to fit (safe to call every time)
     if (forceRef.current) {
       forceRef.current.zoomToFit(400);
     }
-  }, []);
+  }, []); // ✅ EMPTY DEPS - function never changes
+
   // Effects
   useEffect(() => {
     if (selectedRegion) {
@@ -422,69 +456,6 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRegion]);
-
-  useEffect(() => {
-    if (forceRef.current && graphData.nodes.length > 0 && !forceInitialized.current) {
-      // Enhanced force simulation for independent clusters
-
-      // Collision force - smaller radius for tighter clustering
-      forceRef.current.d3Force('collide', forceCollide((node: any) => {
-        const baseRadius = (node.weight || 1) * 2.5;
-        return baseRadius;
-      }).strength(0.9));
-
-      // Charge force - STRONGER repulsion to separate clusters
-      forceRef.current.d3Force('charge', forceManyBody()
-        .strength((node: any) => {
-          // Much stronger repulsion for cluster separation
-          return -500 - (node.weight || 1) * 30;
-        })
-        .distanceMax(600)
-      );
-
-      // Cluster force - STRONGER pull to cluster centers with LARGER radius
-      forceRef.current.d3Force('cluster', () => {
-        const alpha = 0.5; // Stronger clustering force
-        graphData.nodes.forEach((node: any) => {
-          const cluster = node.cluster || 0;
-          // Calculate cluster center with LARGER radius for better separation
-          const angle = (cluster / 5) * 2 * Math.PI;
-          const radius = 400; // Increased from 250 to 400
-          const centerX = 600 + Math.cos(angle) * radius;
-          const centerY = 400 + Math.sin(angle) * radius;
-
-          // Pull nodes toward their cluster center
-          node.vx -= (node.x - centerX) * alpha;
-          node.vy -= (node.y - centerY) * alpha;
-        });
-      });
-
-      // Link force - WEAKER strength for independent clusters
-      forceRef.current.d3Force('link')
-        .distance((link: any) => {
-          const sourceNode = graphData.nodes.find((n: any) => n.id === link.source.id || n.id === link.source);
-          const targetNode = graphData.nodes.find((n: any) => n.id === link.target.id || n.id === link.target);
-
-          // Much shorter distance within cluster, very long distance between clusters
-          if (sourceNode?.cluster === targetNode?.cluster) {
-            return 30; // Tighter within cluster
-          }
-          return 200; // Much longer between clusters for independence
-        })
-        .strength((link: any) => {
-          const sourceNode = graphData.nodes.find((n: any) => n.id === link.source.id || n.id === link.source);
-          const targetNode = graphData.nodes.find((n: any) => n.id === link.target.id || n.id === link.target);
-
-          // Weak link strength between different clusters
-          if (sourceNode?.cluster === targetNode?.cluster) {
-            return 0.4; // Normal strength within cluster
-          }
-          return 0.05; // Very weak strength between clusters
-        });
-
-      forceInitialized.current = true;
-    }
-  }, [graphData.nodes.length]); // FIXED: Remove graphData from dependencies
 
   // Render Methods
   const renderDetailsPanel = () => (
@@ -746,7 +717,7 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
               ) : (
                 <ForceGraph2D
                   ref={forceRef}
-                  graphData={graphData}
+                  graphData={graphDataRef.current}
                   nodeColor={getNodeColor}
                   nodeRelSize={8}
                   nodeLabel={nodeLabel}

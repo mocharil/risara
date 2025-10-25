@@ -3,7 +3,8 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Hash, TrendingUp } from 'lucide-react';
+import { StatsCard } from '@/components/dashboard/stats-card';
+import { Hash, TrendingUp, MessageSquare, Activity, AlertCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import {
   Select,
@@ -118,22 +119,42 @@ export function KeywordCloud({ data, isLoading }: KeywordCloudProps) {
       <CardContent>
         {/* Stats Summary */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-            <div className="text-xs text-blue-600 mb-1">Total Keywords</div>
-            <div className="text-2xl font-bold text-blue-700">{data.stats.total}</div>
-          </div>
-          <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-            <div className="text-xs text-green-600 mb-1">Total Mentions</div>
-            <div className="text-2xl font-bold text-green-700">{data.stats.totalMentions}</div>
-          </div>
-          <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
-            <div className="text-xs text-purple-600 mb-1">Avg Mentions</div>
-            <div className="text-2xl font-bold text-purple-700">{data.stats.avgMentions.toFixed(1)}</div>
-          </div>
-          <div className="p-3 bg-red-50 rounded-lg border border-red-200">
-            <div className="text-xs text-red-600 mb-1">High Urgency</div>
-            <div className="text-2xl font-bold text-red-700">{data.stats.highUrgencyKeywords}</div>
-          </div>
+          <StatsCard
+            title="Total Keywords"
+            value={data.stats.total.toString()}
+            description="Unique keywords"
+            icon={Hash}
+            color="text-blue-600"
+            tooltip="Total number of unique keywords and hashtags identified"
+            className="min-h-[140px]"
+          />
+          <StatsCard
+            title="Total Mentions"
+            value={data.stats.totalMentions.toString()}
+            description="All mentions"
+            icon={MessageSquare}
+            color="text-green-600"
+            tooltip="Total number of times keywords were mentioned"
+            className="min-h-[140px]"
+          />
+          <StatsCard
+            title="Avg Mentions"
+            value={data.stats.avgMentions.toFixed(1)}
+            description="Per keyword"
+            icon={Activity}
+            color="text-purple-600"
+            tooltip="Average mentions per keyword"
+            className="min-h-[140px]"
+          />
+          <StatsCard
+            title="High Urgency"
+            value={data.stats.highUrgencyKeywords.toString()}
+            description="Critical keywords"
+            icon={AlertCircle}
+            color="text-red-600"
+            tooltip="Number of keywords with high urgency scores"
+            className="min-h-[140px]"
+          />
         </div>
 
         {/* Cloud View */}

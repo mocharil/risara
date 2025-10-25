@@ -3,8 +3,10 @@
 
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { StatsCard } from '@/components/dashboard/stats-card';
 import { CheckSquare, AlertTriangle, ChevronDown, ChevronUp, Filter } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import ReactMarkdown from 'react-markdown';
 import {
   Select,
   SelectContent,
@@ -136,34 +138,42 @@ export function ProblemSolutionMatrix({ data, isLoading, onFilterChange }: Probl
       <CardContent>
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-            <div className="flex items-center gap-2 text-red-600 mb-1">
-              <AlertTriangle className="h-4 w-4" />
-              <span className="text-xs font-medium">Critical</span>
-            </div>
-            <div className="text-2xl font-bold text-red-700">{data.stats.critical}</div>
-          </div>
-          <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
-            <div className="flex items-center gap-2 text-orange-600 mb-1">
-              <AlertTriangle className="h-4 w-4" />
-              <span className="text-xs font-medium">High</span>
-            </div>
-            <div className="text-2xl font-bold text-orange-700">{data.stats.high}</div>
-          </div>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <div className="flex items-center gap-2 text-blue-600 mb-1">
-              <CheckSquare className="h-4 w-4" />
-              <span className="text-xs font-medium">Total</span>
-            </div>
-            <div className="text-2xl font-bold text-blue-700">{data.stats.total}</div>
-          </div>
-          <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-            <div className="flex items-center gap-2 text-purple-600 mb-1">
-              <Filter className="h-4 w-4" />
-              <span className="text-xs font-medium">Topics</span>
-            </div>
-            <div className="text-2xl font-bold text-purple-700">{data.filters.topics.length}</div>
-          </div>
+          <StatsCard
+            title="Critical"
+            value={data.stats.critical.toString()}
+            description="Urgency ≥ 80"
+            icon={AlertTriangle}
+            color="text-red-600"
+            tooltip="Critical issues requiring immediate attention"
+            className="min-h-[140px]"
+          />
+          <StatsCard
+            title="High"
+            value={data.stats.high.toString()}
+            description="Urgency 60-79"
+            icon={AlertTriangle}
+            color="text-orange-600"
+            tooltip="High priority issues"
+            className="min-h-[140px]"
+          />
+          <StatsCard
+            title="Total"
+            value={data.stats.total.toString()}
+            description="All insights"
+            icon={CheckSquare}
+            color="text-blue-600"
+            tooltip="Total number of insights analyzed"
+            className="min-h-[140px]"
+          />
+          <StatsCard
+            title="Topics"
+            value={data.filters.topics.length.toString()}
+            description="Unique topics"
+            icon={Filter}
+            color="text-purple-600"
+            tooltip="Number of unique topics identified"
+            className="min-h-[140px]"
+          />
         </div>
 
         {/* Table */}
@@ -205,24 +215,48 @@ export function ProblemSolutionMatrix({ data, isLoading, onFilterChange }: Probl
                     {expandedRows.has(index) && (
                       <TableRow>
                         <TableCell colSpan={5} className="bg-gray-50">
-                          <div className="p-4 space-y-4">
+                          <div className="p-6 space-y-6">
                             <div>
-                              <h4 className="font-semibold text-sm text-gray-700 mb-2 flex items-center gap-2">
-                                <AlertTriangle className="h-4 w-4 text-red-600" />
-                                Problem:
-                              </h4>
-                              <p className="text-sm text-gray-600 leading-relaxed pl-6">
-                                {item.problem}
-                              </p>
+                              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-red-200">
+                                <div className="p-1.5 bg-red-100 rounded">
+                                  <AlertTriangle className="h-4 w-4 text-red-600" />
+                                </div>
+                                <h4 className="font-semibold text-sm text-red-700">Problem:</h4>
+                              </div>
+                              <div className="pl-8 prose prose-sm max-w-none">
+                                <ReactMarkdown
+                                  components={{
+                                    p: ({ node, ...props }) => <p className="text-sm text-gray-700 leading-relaxed mb-2" {...props} />,
+                                    strong: ({ node, ...props }) => <strong className="font-semibold text-gray-900" {...props} />,
+                                    ul: ({ node, ...props }) => <ul className="list-disc pl-4 space-y-1 my-2" {...props} />,
+                                    ol: ({ node, ...props }) => <ol className="list-decimal pl-4 space-y-1 my-2" {...props} />,
+                                    li: ({ node, ...props }) => <li className="text-sm text-gray-700" {...props} />,
+                                  }}
+                                >
+                                  {item.problem}
+                                </ReactMarkdown>
+                              </div>
                             </div>
                             <div>
-                              <h4 className="font-semibold text-sm text-gray-700 mb-2 flex items-center gap-2">
-                                <CheckSquare className="h-4 w-4 text-green-600" />
-                                Suggestion:
-                              </h4>
-                              <p className="text-sm text-gray-600 leading-relaxed pl-6">
-                                {item.suggestion}
-                              </p>
+                              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-green-200">
+                                <div className="p-1.5 bg-green-100 rounded">
+                                  <CheckSquare className="h-4 w-4 text-green-600" />
+                                </div>
+                                <h4 className="font-semibold text-sm text-green-700">Suggestion:</h4>
+                              </div>
+                              <div className="pl-8 prose prose-sm max-w-none">
+                                <ReactMarkdown
+                                  components={{
+                                    p: ({ node, ...props }) => <p className="text-sm text-gray-700 leading-relaxed mb-2" {...props} />,
+                                    strong: ({ node, ...props }) => <strong className="font-semibold text-gray-900" {...props} />,
+                                    ul: ({ node, ...props }) => <ul className="list-disc pl-4 space-y-1 my-2" {...props} />,
+                                    ol: ({ node, ...props }) => <ol className="list-decimal pl-4 space-y-1 my-2" {...props} />,
+                                    li: ({ node, ...props }) => <li className="text-sm text-gray-700" {...props} />,
+                                  }}
+                                >
+                                  {item.suggestion}
+                                </ReactMarkdown>
+                              </div>
                             </div>
                           </div>
                         </TableCell>
