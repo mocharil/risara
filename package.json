@@ -50,7 +50,9 @@
     "reactflow": "^11.11.4",
     "recharts": "^2.15.4",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vis-data": "^8.0.3",
+    "vis-network": "^10.0.2"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",

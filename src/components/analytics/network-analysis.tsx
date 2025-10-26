@@ -3,7 +3,6 @@
 
 import { X } from 'lucide-react';
 import React, { useState, useCallback, useEffect, useRef, useMemo } from 'react';
-import ForceGraph2D from 'react-force-graph-2d';
 import { forceCollide, forceManyBody } from 'd3-force';
 import { Card, CardContent } from '@/components/ui/card';
 import { Loading } from '@/components/ui/loading';
@@ -16,6 +15,7 @@ import {
 } from '@/components/ui/select';
 import { AnalyticsData } from '@/types/analytics';
 import { useRenderLoopGuard } from '@/utils/react-guards';
+import { ForceGraphWrapper } from './ForceGraphWrapper';
 
 // Types
 interface NetworkData {
@@ -240,7 +240,8 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [summary, setSummary] = useState<Summary | null>(null);
   const [summaryLoading, setSummaryLoading] = useState(false);
-  
+  const [isMounted, setIsMounted] = useState(true);
+
   const forceRef = useRef<any>(null);
   const fetchInProgress = useRef(false);
   const forceInitialized = useRef(false);
@@ -416,6 +417,13 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
 
   const nodeLabel = useCallback((node: any) => node.label, []);
 
+  // Memoize graphData to prevent re-creation on every render
+  const memoizedGraphData = useMemo(() => graphData, [
+    graphData.nodes.length,
+    graphData.links.length,
+    graphData.meta.region
+  ]);
+
   // ONE-TIME force setup - only runs when graph first loads
   const onEngineStop = useCallback(() => {
     if (!forceRef.current) return;
@@ -437,15 +445,17 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
           linkForce.distance(60).strength(0.3);
         }
 
+        // Zoom to fit only ONCE
+        setTimeout(() => {
+          if (forceRef.current) {
+            forceRef.current.zoomToFit(400);
+          }
+        }, 100);
+
         forceInitialized.current = true;
       } catch (error) {
         console.error('Error setting up force simulation:', error);
       }
-    }
-
-    // Zoom to fit (safe to call every time)
-    if (forceRef.current) {
-      forceRef.current.zoomToFit(400);
     }
   }, []); // ✅ EMPTY DEPS - function never changes
 
@@ -456,6 +466,31 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRegion]);
+
+  // Cleanup on unmount - CRITICAL to prevent memory leaks
+  useEffect(() => {
+    setIsMounted(true);
+
+    return () => {
+      setIsMounted(false);
+
+      // Stop any ongoing force simulation
+      if (forceRef.current) {
+        try {
+          const simulation = forceRef.current.d3Force('simulation');
+          if (simulation && simulation.stop) {
+            simulation.stop();
+          }
+        } catch (e) {
+          // Ignore cleanup errors
+        }
+      }
+
+      // Reset flags
+      forceInitialized.current = false;
+      fetchInProgress.current = false;
+    };
+  }, []);
 
   // Render Methods
   const renderDetailsPanel = () => (
@@ -715,29 +750,32 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
                   <div className="text-lg text-red-500">{error}</div>
                 </div>
               ) : (
-                <ForceGraph2D
-                  ref={forceRef}
-                  graphData={graphDataRef.current}
-                  nodeColor={getNodeColor}
-                  nodeRelSize={8}
-                  nodeLabel={nodeLabel}
-                  linkColor={linkColor}
-                  linkWidth={0.8}
-                  nodeCanvasObject={nodeCanvasObject}
-                  onNodeClick={onNodeClick}
-                  cooldownTicks={250}
-                  onEngineStop={onEngineStop}
-                  enableNodeDrag={true}
-                  enableZoomInteraction={true}
-                  linkDirectionalParticles={2}
-                  linkDirectionalParticleWidth={1.5}
-                  linkDirectionalParticleSpeed={0.002}
-                  d3AlphaDecay={0.015}
-                  d3VelocityDecay={0.15}
-                  warmupTicks={100}
-                  width={1200}
-                  height={700}
-                />
+                isMounted && graphData.nodes.length > 0 && (
+                  <ForceGraphWrapper
+                    key={`graph-${selectedRegion}-${graphData.nodes.length}`}
+                    ref={forceRef}
+                    graphData={memoizedGraphData}
+                    nodeColor={getNodeColor}
+                    nodeRelSize={8}
+                    nodeLabel={nodeLabel}
+                    linkColor={linkColor}
+                    linkWidth={0.8}
+                    nodeCanvasObject={nodeCanvasObject}
+                    onNodeClick={onNodeClick}
+                    cooldownTicks={250}
+                    onEngineStop={onEngineStop}
+                    enableNodeDrag={true}
+                    enableZoomInteraction={true}
+                    linkDirectionalParticles={2}
+                    linkDirectionalParticleWidth={1.5}
+                    linkDirectionalParticleSpeed={0.002}
+                    d3AlphaDecay={0.015}
+                    d3VelocityDecay={0.15}
+                    warmupTicks={100}
+                    width={1200}
+                    height={700}
+                  />
+                )
               )}
             </div>
           </CardContent>
