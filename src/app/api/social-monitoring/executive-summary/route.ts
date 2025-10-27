@@ -1,71 +1,26 @@
 // src/app/api/social-monitoring/executive-summary/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { getInsightTikTokCollection, getInsightNewsCollection } from '@/lib/mongodb';
-import { VertexAI, HarmCategory, HarmBlockThreshold } from '@google-cloud/vertexai';
-import * as fs from 'fs';
-import * as path from 'path';
 import { enhancedExecutiveSummary } from '@/lib/enhancedDummyData';
+import { useDummyData } from '@/lib/useDummyData';
+import {
+  initializeVertexAI,
+  GEMINI_MODEL,
+  GEMINI_SAFETY_SETTINGS,
+  GEMINI_GENERATION_CONFIG
+} from '@/lib/geminiConfig';
 
 // Check if we should use dummy data
-const USE_DUMMY_DATA = process.env.USE_DUMMY_DATA === 'true' || process.env.NEXT_PUBLIC_USE_DUMMY_DATA === 'true';
+const USE_DUMMY_DATA = useDummyData();
 
-const projectId = process.env.GEMINI_PROJECT_ID || '';
-const credentialsPath = process.env.GEMINI_CREDS_PATH || '';
+// Initialize Vertex AI with credentials from environment
+const vertexAI = initializeVertexAI();
 
-// Read credentials file
-let credentials: any = null;
-try {
-  const fullPath = path.resolve(process.cwd(), credentialsPath);
-  if (fs.existsSync(fullPath)) {
-    const credentialsContent = fs.readFileSync(fullPath, 'utf-8');
-    credentials = JSON.parse(credentialsContent);
-  }
-} catch (error) {
-  console.error('Error reading credentials file:', error);
-}
-
-// Initialize Vertex AI
-let vertexAI: VertexAI | null = null;
-try {
-  vertexAI = new VertexAI({
-    project: projectId,
-    location: 'us-central1',
-    googleAuthOptions: credentials ? {
-      credentials: credentials,
-    } : {
-      keyFilename: credentialsPath,
-    },
-  });
-} catch (error) {
-  console.error('Error initializing VertexAI:', error);
-}
-
-const model = 'gemini-2.5-flash-lite';
-
-const safetySettings = [
-  {
-    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-];
-
+// Use custom generation config with higher max tokens for executive summary
 const generationConfig = {
-  temperature: 0.3,
-  topP: 1,
-  topK: 32,
-  maxOutputTokens: 4096,
+  ...GEMINI_GENERATION_CONFIG,
+  temperature: 0.3, // Slightly higher for more creative summaries
+  maxOutputTokens: 4096, // Higher limit for longer executive summaries
 };
 
 function generateExecutiveSummaryPrompt(tiktokInsights: any[], newsInsights: any[], date: string) {
@@ -209,8 +164,8 @@ export async function GET(request: NextRequest) {
 
     // Get generative model
     const generativeModel = vertexAI.getGenerativeModel({
-      model: model,
-      safetySettings: safetySettings,
+      model: GEMINI_MODEL,
+      safetySettings: GEMINI_SAFETY_SETTINGS,
       generationConfig: generationConfig,
     });
 

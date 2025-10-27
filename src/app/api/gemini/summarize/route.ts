@@ -1,67 +1,14 @@
 // src/app/api/gemini/summarize/route.ts
 import { NextResponse } from 'next/server';
-import { VertexAI, HarmCategory, HarmBlockThreshold } from '@google-cloud/vertexai';
-import * as fs from 'fs';
-import * as path from 'path';
+import {
+  initializeVertexAI,
+  GEMINI_MODEL,
+  GEMINI_SAFETY_SETTINGS,
+  GEMINI_GENERATION_CONFIG
+} from '@/lib/geminiConfig';
 
-const projectId = process.env.GEMINI_PROJECT_ID || '';
-const credentialsPath = process.env.GEMINI_CREDS_PATH || '';
-
-// Read credentials file
-let credentials: any = null;
-try {
-  const fullPath = path.resolve(process.cwd(), credentialsPath);
-  if (fs.existsSync(fullPath)) {
-    const credentialsContent = fs.readFileSync(fullPath, 'utf-8');
-    credentials = JSON.parse(credentialsContent);
-  }
-} catch (error) {
-  console.error('Error reading credentials file:', error);
-}
-
-// Initialize Vertex AI
-let vertexAI: VertexAI | null = null;
-try {
-  vertexAI = new VertexAI({
-    project: projectId,
-    location: 'us-central1',
-    googleAuthOptions: credentials ? {
-      credentials: credentials,
-    } : {
-      keyFilename: credentialsPath,
-    },
-  });
-} catch (error) {
-  console.error('Error initializing VertexAI:', error);
-}
-
-const model = 'gemini-2.5-flash-lite';
-
-const safetySettings = [
-  {
-    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-];
-
-const generationConfig = {
-  temperature: 0.0,
-  topP: 1,
-  topK: 32,
-  maxOutputTokens: 2048,
-};
+// Initialize Vertex AI with credentials from environment
+const vertexAI = initializeVertexAI();
 
 function generateSummaryPrompt(posts: Array<{ full_text: string; contextual_content: string }>) {
   const postsText = posts
@@ -97,7 +44,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error: 'Gemini service not initialized',
-          details: 'Check GEMINI_PROJECT_ID and GEMINI_CREDS_PATH environment variables'
+          details: 'Check GEMINI_PROJECT_ID and GEMINI_CREDS_JSON (or GEMINI_CREDS_PATH) environment variables'
         },
         { status: 500 }
       );
@@ -118,9 +65,9 @@ export async function POST(request: Request) {
 
     // Get generative model
     const generativeModel = vertexAI.getGenerativeModel({
-      model: model,
-      safetySettings: safetySettings,
-      generationConfig: generationConfig,
+      model: GEMINI_MODEL,
+      safetySettings: GEMINI_SAFETY_SETTINGS,
+      generationConfig: GEMINI_GENERATION_CONFIG,
     });
 
     // Generate content

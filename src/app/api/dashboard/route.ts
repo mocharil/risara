@@ -3,9 +3,10 @@
 import { NextResponse } from 'next/server'
 import { getTikTokCollection, getInsightTikTokCollection, getNewsCollection, getInsightNewsCollection } from '@/lib/mongodb'
 import { enhancedNewsArticles, enhancedTikTokPosts, enhancedStatistics, enhancedNewsInsights, enhancedTikTokInsights } from '@/lib/enhancedDummyData'
+import { useDummyData } from '@/lib/useDummyData'
 
 // Check if we should use dummy data
-const USE_DUMMY_DATA = process.env.USE_DUMMY_DATA === 'true' || process.env.NEXT_PUBLIC_USE_DUMMY_DATA === 'true'
+const USE_DUMMY_DATA = useDummyData()
 
 interface NewsMetrics {
   totalArticles: number;
