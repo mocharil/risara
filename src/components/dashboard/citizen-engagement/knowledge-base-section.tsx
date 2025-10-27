@@ -76,13 +76,10 @@ const KnowledgeBaseSection = () => {
         formData.append("file", newKnowledge.file);
       }
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/knowledge-base`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch('/api/knowledge-base', {
+        method: "POST",
+        body: formData,
+      });
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => null);

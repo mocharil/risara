@@ -52,3 +52,8 @@ export async function getInsightNewsCollection() {
   const database = await getDatabase()
   return database.collection('insight_news_jakarta')
 }
+
+export async function getKnowledgeBaseCollection() {
+  const database = await getDatabase()
+  return database.collection('knowledge_base')
+}
