@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { AlertCircle, Users, Clock, Smile, Loader2, BookOpen, Binoculars } from "lucide-react";
+import { AlertCircle, Users, Clock, Smile, BookOpen, Binoculars } from "lucide-react";
 import { StatsCard } from "@/components/dashboard/stats-card";
 import { ResponseTrends } from "./analytics/response-trends";
 import { TopicHeatmap } from "./analytics/topic-heatmap";
 import { EnhancedChatLogs } from "./enhanced-chat-logs";
 import KnowledgeBaseSection from './knowledge-base-section';
+import { Loading } from "@/components/ui/loading";
 
 export function CitizenEngagementView() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -104,11 +105,7 @@ export function CitizenEngagementView() {
   };
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[400px]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
+    return <Loading variant="pulse" size="md" message="Loading Citizen Engagement..." />;
   }
 
   return (

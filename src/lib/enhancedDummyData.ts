@@ -176,6 +176,23 @@ Pemerintah tengah menggencarkan program penghijauan dan uji emisi kendaraan untu
       urgencyRange: [70, 85],
       sentimentBias: 'Negative',
     },
+    // ISU TERKINI: KPK Kawal Normalisasi Kali Ciliwung
+    {
+      titleTemplate: 'KPK Tinjau Langsung Proyek Normalisasi Kali Ciliwung, Minta Percepatan Jelang Musim Hujan',
+      contentTemplate: `Jakarta - Komisi Pemberantasan Korupsi (KPK) turun langsung meninjau proyek normalisasi Kali Ciliwung dan meminta percepatan pelaksanaan jelang musim hujan. Peninjauan dilakukan di tiga titik kritis: Kampung Melayu, Bukit Duri, dan Manggarai.
+
+Tim KPK yang dipimpin oleh Deputi Pencegahan memantau langsung progres pekerjaan dan menyoroti sejumlah kendala. "Kami melihat ada beberapa persoalan terkait pengadaan alat berat, pembebasan lahan, dan koordinasi antar-SKPD yang perlu segera diselesaikan," ujar Deputi Pencegahan KPK.
+
+Proyek normalisasi Kali Ciliwung sepanjang 11,2 kilometer dengan anggaran Rp4,3 triliun ini merupakan salah satu proyek strategis nasional untuk mitigasi banjir Jakarta. Namun, hingga 24 Oktober 2025, progres fisik baru mencapai 52% dari target 75% di akhir tahun.
+
+Kepala Dinas Sumber Daya Air DKI Jakarta berkomitmen akan mempercepat pelaksanaan. "Kami sudah identifikasi bottleneck dan akan menambah shift kerja. Untuk pembebasan lahan yang masih tersisa 12 bidang, kami koordinasi intensif dengan BPN dan warga," jelasnya.
+
+KPK juga menekankan pentingnya transparansi dalam proses pengadaan. "Kami akan terus memantau agar tidak ada penyimpangan. Proyek ini sangat krusial untuk mengurangi risiko banjir di Jakarta," tegasnya.
+
+Warga yang tinggal di bantaran Kali Ciliwung berharap proyek segera rampung. "Setiap musim hujan rumah kami terendam. Kami berharap normalisasi ini bisa mengurangi banjir," ujar {{name}}, warga Bukit Duri.`,
+      urgencyRange: [78, 92],
+      sentimentBias: 'Neutral',
+    },
   ],
   'Government and Public Policy': [
     {
@@ -196,6 +213,51 @@ Ketua DPRD DKI Jakarta menyatakan bahwa Perda ini penting untuk memberikan kepas
 
 Pembahasan Raperda ini melibatkan hearing dengan berbagai stakeholder termasuk akademisi, praktisi, dan organisasi masyarakat sipil. Diharapkan Perda ini dapat disahkan dalam 2 bulan ke depan setelah melalui proses pembahasan yang komprehensif.`,
       urgencyRange: [40, 60],
+      sentimentBias: 'Neutral',
+    },
+    // ISU TERKINI: Dana APBD Mengendap di Bank
+    {
+      titleTemplate: 'Dana APBD DKI Rp14,68 Triliun Mengendap di Bank, Kinerja Belanja Disorot',
+      contentTemplate: `Jakarta - Dana Anggaran Pendapatan dan Belanja Daerah (APBD) DKI Jakarta sebesar Rp14,68 triliun dilaporkan mengendap di sejumlah bank. Fenomena ini memicu kritik terhadap kinerja belanja dan penyerapan anggaran di akhir tahun anggaran 2025.
+
+Pemprov DKI Jakarta membantah bahwa dana tersebut diparkir untuk mendapatkan bunga. "Ini murni karena ritme penyerapan yang berkaitan dengan proses pengadaan yang sedang berjalan. Kami tidak mencari keuntungan dari bunga bank," jelas Kepala Badan Pengelola Keuangan Daerah (BPKD) DKI Jakarta.
+
+Namun, Komisi D DPRD DKI Jakarta meminta klarifikasi dan percepatan realisasi anggaran. "Dengan dana sebesar itu mengendap, layanan publik bisa terhambat. Kami minta Pemprov segera mempercepat proses pengadaan dan pencairan," ujar Ketua Komisi D.
+
+Per 22 Oktober 2025, realisasi APBD DKI Jakarta baru mencapai 68,3% dari total anggaran Rp82,5 triliun. Pemprov menargetkan penyerapan mencapai 90% pada akhir November 2025.`,
+      urgencyRange: [72, 85],
+      sentimentBias: 'Negative',
+    },
+    // ISU TERKINI: Rencana Sanksi Bansos untuk Penjudi Online
+    {
+      titleTemplate: 'Pemprov DKI Akan Beri Sanksi Penerima Bansos yang Terlibat Judi Online',
+      contentTemplate: `Jakarta - Gubernur DKI Jakarta menyatakan akan menertibkan penerima bantuan sosial (bansos) yang terindikasi terlibat dalam judi online (judol). Kebijakan ini memicu pro-kontra terkait mekanisme verifikasi dan potensi salah sasaran.
+
+"Bantuan sosial dari pemerintah seharusnya digunakan untuk kebutuhan pokok keluarga, bukan untuk berjudi. Kami akan menindak tegas penerima bansos yang terbukti menggunakan dana untuk judi online," tegas Gubernur DKI Jakarta dalam rapat koordinasi dengan Dinas Sosial.
+
+Kepala Dinas Sosial DKI Jakarta menjelaskan bahwa proses verifikasi akan dilakukan dengan hati-hati. "Kami akan berkoordinasi dengan kepolisian dan Kemenkominfo untuk data yang valid. Tidak akan ada penghentian bansos tanpa bukti yang kuat," jelasnya.
+
+Sementara itu, sejumlah aktivis masyarakat mempertanyakan akurasi data dan mekanisme pembuktiannya. "Bagaimana pemerintah bisa memastikan seseorang menggunakan dana bansos untuk judi online? Kami khawatir akan ada salah sasaran," ungkap koordinator LSM Peduli Rakyat Jakarta.
+
+Hingga 25 Oktober 2025, tercatat 1,2 juta kepala keluarga di Jakarta menerima bansos dari Pemprov DKI. Kebijakan sanksi ini direncanakan efektif mulai Desember 2025 setelah sistem verifikasi rampung.`,
+      urgencyRange: [65, 78],
+      sentimentBias: 'Neutral',
+    },
+    // ISU TERKINI: Pengetatan Fiskal vs Pembangunan
+    {
+      titleTemplate: 'Di Tengah Efisiensi Pusat, Gubernur Tegaskan Pembangunan Jakarta Tidak Boleh Melambat',
+      contentTemplate: `Jakarta - Gubernur DKI Jakarta menegaskan bahwa proyek pembangunan strategis di Jakarta tidak boleh melambat meskipun pemerintah pusat mengeluarkan kebijakan pengetatan fiskal. Pernyataan ini disampaikan dalam rapat evaluasi kinerja Satuan Kerja Perangkat Daerah (SKPD).
+
+"Kami memahami arahan efisiensi dari pemerintah pusat, namun pembangunan infrastruktur dan layanan dasar masyarakat Jakarta harus tetap berjalan. Ini tentang keberlangsungan pelayanan publik," ujar Gubernur DKI Jakarta.
+
+Kepala Bappeda DKI Jakarta menjelaskan strategi penyesuaian anggaran tanpa mengorbankan prioritas. "Kami akan fokus pada proyek strategis seperti MRT Fase 3, normalisasi Kali Ciliwung, dan pembangunan rumah susun. Efisiensi akan dilakukan di belanja operasional dan perjalanan dinas," jelasnya.
+
+Pemerintah pusat melalui Kemenkeu telah menginstruksikan seluruh daerah untuk memangkas belanja hingga 15% guna menjaga defisit APBN. Kebijakan ini berdampak pada transfer dana ke daerah termasuk DKI Jakarta yang mengalami penurunan sebesar Rp3,2 triliun.
+
+Pengamat kebijakan publik dari Universitas Indonesia menilai langkah Pemprov DKI cukup berisiko. "Jika tidak dikelola dengan baik, bisa terjadi pembengkakan defisit daerah. Namun, prioritas pada layanan dasar adalah langkah yang tepat," ujar Prof. {{name}}.
+
+Hingga kini, 12 proyek strategis senilai Rp28,5 triliun masih berjalan di Jakarta dengan tingkat penyelesaian rata-rata 65%.`,
+      urgencyRange: [70, 82],
       sentimentBias: 'Neutral',
     },
   ],
@@ -219,6 +281,25 @@ Kepala Dinas Pendidikan menyatakan akan segera membuka rekrutmen untuk {{number}
 Sementara itu, beberapa kepala sekolah di {{region}} berharap proses rekrutmen dapat dipercepat. "Kami sangat membutuhkan tambahan tenaga pengajar agar proses belajar mengajar berjalan optimal," ujar salah seorang kepala sekolah.`,
       urgencyRange: [60, 75],
       sentimentBias: 'Neutral',
+    },
+    // ISU TERKINI: Penolakan Visa Atlet Israel - Reputasi Jakarta sebagai Tuan Rumah Event Global Terancam
+    {
+      titleTemplate: 'IOC Rekomendasikan Tidak Gelar Event di Indonesia Pasca Penolakan Visa Atlet Israel',
+      contentTemplate: `Jakarta - International Olympic Committee (IOC) merekomendasikan federasi olahraga internasional untuk tidak menggelar event di Indonesia setelah pemerintah menolak visa atlet Israel yang akan berkompetisi di Kejuaraan Dunia Senam 2025 di Jakarta. Keputusan ini berpotensi merusak reputasi Jakarta sebagai kota penyelenggara event olahraga global.
+
+Kejuaraan Dunia Senam yang berlangsung di Jakarta International Expo (JIExpo), Kemayoran, pada 21-27 Oktober 2025 menjadi sorotan internasional setelah 5 atlet Israel tidak dapat masuk Indonesia karena visa ditolak. Federasi Senam Internasional (FIG) mengajukan protes keras kepada pemerintah Indonesia.
+
+Dalam pernyataannya, IOC menyatakan, "Kami sangat kecewa dengan keputusan pemerintah Indonesia. Prinsip non-diskriminasi adalah fondasi Gerakan Olimpik. Kami telah menghentikan dialog terkait penyelenggaraan event multisport di Indonesia dan merekomendasikan federasi internasional untuk mempertimbangkan ulang Indonesia sebagai tuan rumah."
+
+Keputusan ini berdampak pada sejumlah event besar yang dijadwalkan di Jakarta, termasuk FIBA Asia Cup 2026 dan Asian Beach Games 2027. Kemenpora RI menyatakan keputusan penolakan visa merupakan kebijakan politik luar negeri pemerintah terkait situasi Palestina-Israel.
+
+Gubernur DKI Jakarta menyayangkan dampak ekonomi dari keputusan ini. "Jakarta telah berinvestasi besar dalam infrastruktur olahraga kelas dunia. Kami berharap pemerintah pusat dan IOC dapat menemukan jalan tengah agar Jakarta tetap bisa menjadi tuan rumah event internasional," ujarnya.
+
+Pengamat olahraga memperkirakan kerugian ekonomi bisa mencapai Rp850 miliar per tahun jika Jakarta tidak lagi menjadi tuan rumah event olahraga besar. "Ini bukan hanya soal olahraga, tapi juga pariwisata, hotel, transportasi, dan sektor lainnya," ungkap ekonom dari INDEF.
+
+Asosiasi Pengusaha Hotel dan Restoran Indonesia (PHRI) DKI Jakarta juga menyatakan keprihatinan. "Event olahraga internasional memberikan kontribusi signifikan bagi okupansi hotel dan industri perhotelan Jakarta. Kami berharap ada solusi diplomatik," kata Ketua PHRI DKI Jakarta.`,
+      urgencyRange: [75, 88],
+      sentimentBias: 'Negative',
     },
   ],
   'Social and Economy': [
@@ -333,6 +414,25 @@ const TIKTOK_TEMPLATES = {
       sentimentBias: 'Negative',
       likeRange: [7000, 28000],
     },
+    // ISU TERKINI: KPK Kawal Normalisasi Kali Ciliwung
+    {
+      template: 'KPK turun langsung pantau normalisasi Kali Ciliwung! Progres baru 52% padahal musim hujan udah mau tiba 😰 Banjir lagi nih kalo ga cepet! #KaliCiliwung #Banjir #KPK',
+      urgencyRange: [80, 92],
+      sentimentBias: 'Negative',
+      likeRange: [22000, 68000],
+    },
+    {
+      template: 'Pembebasan lahan Kali Ciliwung masih 12 bidang yang tersisa. Semoga cepat selesai biar proyek ga molor! Takut banjir lagi 🙏 #NormalisasiKaliCiliwung #BanjirJakarta',
+      urgencyRange: [75, 88],
+      sentimentBias: 'Neutral',
+      likeRange: [16000, 54000],
+    },
+    {
+      template: 'Tinggal di bantaran Kali Ciliwung emang selalu deg-degan kalo musim hujan. Kapan normalisasi kelar? 😔 #BantaranKali #BanjirJakarta #KampungMelayu',
+      urgencyRange: [78, 90],
+      sentimentBias: 'Negative',
+      likeRange: [14000, 48000],
+    },
   ],
   'Government and Public Policy': [
     {
@@ -340,6 +440,39 @@ const TIKTOK_TEMPLATES = {
       urgencyRange: [20, 35],
       sentimentBias: 'Positive',
       likeRange: [6000, 24000],
+    },
+    // ISU TERKINI: Dana APBD Mengendap
+    {
+      template: 'Dana APBD 14,68 TRILIUN mengendap di bank?! 😱 Sementara fasilitas publik masih banyak yang rusak! Kemana aja duit rakyat?! @DKIJakarta #APBD #TransparansiAnggaran #JakartaBersuara',
+      urgencyRange: [75, 90],
+      sentimentBias: 'Negative',
+      likeRange: [18000, 65000],
+    },
+    {
+      template: 'Penyerapan APBD DKI baru 68%?! Padahal udah Oktober! Kalo gini terus gimana pembangunan Jakarta mau maju? 🤦‍♂️ #APBD #AnggaranDaerah #JakartaMaju',
+      urgencyRange: [70, 85],
+      sentimentBias: 'Negative',
+      likeRange: [12000, 48000],
+    },
+    // ISU TERKINI: Sanksi Bansos untuk Penjudi Online
+    {
+      template: 'Penerima bansos yang main judol mau disanksi? Setuju sih, tapi gimana cara buktiin? Jangan sampai salah sasaran ya! 😬 #Bansos #JudiOnline #KebijakanPublik',
+      urgencyRange: [65, 80],
+      sentimentBias: 'Neutral',
+      likeRange: [15000, 52000],
+    },
+    {
+      template: 'Bansos itu buat makan bukan buat judi! Dukung kebijakan Pemprov DKI buat sanksi penerima bansos yang main judol 💪 #Bansos #AntiJudol #JakartaBersih',
+      urgencyRange: [55, 70],
+      sentimentBias: 'Positive',
+      likeRange: [9000, 35000],
+    },
+    // ISU TERKINI: Pengetatan Fiskal vs Pembangunan
+    {
+      template: 'Pusat minta efisiensi, tapi Gubernur bilang pembangunan ga boleh melambat. Siapa yang bener nih? 🤔 Yang penting layanan publik jangan sampai terganggu! #KebijakanFiskal #Pembangunan',
+      urgencyRange: [60, 75],
+      sentimentBias: 'Neutral',
+      likeRange: [10000, 42000],
     },
     {
       template: 'Pelayanan di Kelurahan {{region}} makin bagus!Urus dokumen jadi cepet banget 👍 #PelayananPublik #{{region}}',
@@ -366,6 +499,31 @@ const TIKTOK_TEMPLATES = {
       urgencyRange: [20, 35],
       sentimentBias: 'Positive',
       likeRange: [6500, 26000],
+    },
+    // ISU TERKINI: Penolakan Visa Atlet Israel - Dampak ke Event Olahraga & Ekonomi Jakarta
+    {
+      template: 'IOC stop kerja sama sama Indonesia gara-gara visa atlet Israel ditolak! 😱 Jakarta bisa kehilangan event olahraga internasional! Kerugian ekonomi 850M/tahun! #IOC #EventOlahraga #Jakarta',
+      urgencyRange: [78, 92],
+      sentimentBias: 'Negative',
+      likeRange: [25000, 78000],
+    },
+    {
+      template: 'FIBA Asia Cup 2026 & Asian Beach Games 2027 di Jakarta terancam batal! 😭 Ini masalah serius buat pariwisata dan ekonomi Jakarta! #EventOlahraga #PariwisataJakarta',
+      urgencyRange: [72, 86],
+      sentimentBias: 'Negative',
+      likeRange: [18000, 62000],
+    },
+    {
+      template: 'Hotel-hotel Jakarta bakal sepi kalo ga ada event olahraga internasional lagi 😔 Kasian pelaku usaha perhotelan & pariwisata! #HotelJakarta #Pariwisata #EventOlahraga',
+      urgencyRange: [68, 82],
+      sentimentBias: 'Negative',
+      likeRange: [14000, 48000],
+    },
+    {
+      template: 'Jakarta udah invest gede buat infrastruktur olahraga kelas dunia. Sayang banget kalo ga bisa jadi tuan rumah lagi 💔 #InfrastrukturOlahraga #JakartaMaju',
+      urgencyRange: [70, 84],
+      sentimentBias: 'Negative',
+      likeRange: [16000, 54000],
     },
   ],
   'Safety and Crime': [
@@ -464,6 +622,77 @@ const CHAT_TEMPLATES = [
     botResponse: 'Mohon maaf atas keterlambatan ini. Sistem SIMBG sedang upgrade dan kami tambah 50 verifikator. Silakan email nomor permohonan Anda ke imb@jakarta.go.id dengan subjek "URGENT IMB" untuk dipercepat. Kami bantu konsultasi online gratis.',
     topic: 'Government and Public Policy',
     urgencyRange: [70, 80],
+  },
+  // ISU TERKINI Oct 20-27, 2025: Dana APBD Mengendap
+  {
+    userMessage: 'Dana APBD DKI 14,68 triliun mengendap di bank? Kok bisa? Bukannya harusnya untuk pembangunan?',
+    botResponse: 'Dana tersebut mengendap karena ritme penyerapan yang terkait dengan proses pengadaan yang sedang berjalan. Realisasi APBD saat ini 68,3% dari total Rp82,5 triliun. Kami menargetkan 90% di akhir November. Kami pastikan dana akan tersalurkan untuk layanan publik dan pembangunan.',
+    topic: 'Government and Public Policy',
+    urgencyRange: [75, 88],
+  },
+  {
+    userMessage: 'Kenapa penyerapan APBD DKI lambat? Proyek apa aja yang tertunda?',
+    botResponse: 'Beberapa proyek sedang dalam tahap pengadaan dan pembebasan lahan. Komisi D DPRD DKI telah meminta percepatan. Kami akan tingkatkan koordinasi antar-SKPD untuk mempercepat proses. Untuk info detail proyek, bisa cek di jakarta.go.id/transparansi',
+    topic: 'Government and Public Policy',
+    urgencyRange: [70, 82],
+  },
+  // ISU TERKINI: KPK Kawal Normalisasi Kali Ciliwung
+  {
+    userMessage: 'Proyek normalisasi Kali Ciliwung progresnya berapa persen? Takut banjir lagi!',
+    botResponse: 'Per 24 Oktober 2025, progres normalisasi Kali Ciliwung sudah 52% dari target 75% akhir tahun. KPK sedang memantau percepatan. Kendala utama: pembebasan 12 bidang lahan tersisa dan pengadaan alat. Kami tambah shift kerja untuk kejar target sebelum puncak musim hujan.',
+    topic: 'Environment and Disaster',
+    urgencyRange: [80, 93],
+  },
+  {
+    userMessage: 'Saya tinggal di bantaran Kali Ciliwung Bukit Duri. Kapan normalisasi selesai?',
+    botResponse: 'Normalisasi Kali Ciliwung di area Bukit Duri ditargetkan selesai Maret 2026. Untuk keamanan Anda, kami sarankan ikuti early warning system banjir Jakarta di pantaubanjir.jakarta.go.id dan siapkan tas siaga bencana. BPBD selalu siap evakuasi 24/7 di 021-6519444.',
+    topic: 'Environment and Disaster',
+    urgencyRange: [78, 90],
+  },
+  // ISU TERKINI: Sanksi Bansos untuk Penjudi Online
+  {
+    userMessage: 'Bener nih penerima bansos yang main judi online bakal disanksi? Gimana cara buktiin?',
+    botResponse: 'Ya, kebijakan ini akan diterapkan mulai Desember 2025. Verifikasi dilakukan melalui koordinasi dengan Polisi dan Kemenkominfo untuk data valid. Tidak akan ada penghentian tanpa bukti kuat. Bansos untuk 1,2 juta KK di Jakarta harus tepat sasaran untuk kebutuhan pokok.',
+    topic: 'Government and Public Policy',
+    urgencyRange: [68, 80],
+  },
+  {
+    userMessage: 'Saya takut kena salah sangka terkait bansos dan judi online. Bagaimana perlindungannya?',
+    botResponse: 'Jangan khawatir, proses verifikasi akan sangat hati-hati. Jika ada kekeliruan, warga bisa mengajukan klarifikasi ke Dinas Sosial dengan membawa bukti. Kami juga buka hotline pengaduan di 1500-799. Prinsip kami: presumption of innocence sampai terbukti.',
+    topic: 'Government and Public Policy',
+    urgencyRange: [60, 75],
+  },
+  // ISU TERKINI: Penolakan Visa Atlet Israel & Dampak Event Olahraga
+  {
+    userMessage: 'IOC rekomendasikan ga ada event lagi di Indonesia? Gimana nasib Jakarta?',
+    botResponse: 'IOC memang menghentikan dialog event multisport dan merekomendasikan federasi internasional pertimbangkan ulang Indonesia sebagai tuan rumah. Ini berdampak pada FIBA Asia Cup 2026 & Asian Beach Games 2027. Gubernur DKI berharap ada jalan tengah diplomatik antara pemerintah pusat dan IOC.',
+    topic: 'Social and Economy',
+    urgencyRange: [78, 90],
+  },
+  {
+    userMessage: 'Kenapa visa atlet Israel ditolak? Ini kan event olahraga, bukan politik!',
+    botResponse: 'Keputusan penolakan visa merupakan kebijakan politik luar negeri pemerintah pusat terkait situasi Palestina-Israel. Pemprov DKI Jakarta fokus pada dampak ekonomi dan pariwisata. Kerugian ekonomi diperkirakan Rp850 miliar/tahun jika event internasional tidak lagi di Jakarta.',
+    topic: 'Social and Economy',
+    urgencyRange: [75, 88],
+  },
+  {
+    userMessage: 'Industri hotel Jakarta bakal rugi besar ya kalau ga ada event olahraga internasional?',
+    botResponse: 'Ya, PHRI DKI Jakarta menyatakan event olahraga internasional kontribusi signifikan bagi okupansi hotel. Jakarta sudah investasi besar di infrastruktur olahraga seperti GBK, JIExpo, dan venue lain. Kami berharap solusi diplomatik segera ditemukan untuk lindungi sektor pariwisata.',
+    topic: 'Social and Economy',
+    urgencyRange: [72, 85],
+  },
+  // ISU TERKINI: Pengetatan Fiskal vs Pembangunan Jakarta
+  {
+    userMessage: 'Pemerintah pusat minta efisiensi, tapi proyek pembangunan Jakarta gimana?',
+    botResponse: 'Gubernur DKI tegaskan proyek strategis seperti MRT Fase 3, normalisasi Kali Ciliwung, dan rusun tetap berjalan. Efisiensi akan difokuskan pada belanja operasional dan perjalanan dinas. Prioritas tetap pada layanan dasar dan infrastruktur penting untuk warga Jakarta.',
+    topic: 'Government and Public Policy',
+    urgencyRange: [72, 84],
+  },
+  {
+    userMessage: 'Transfer dana ke DKI Jakarta dikurangi Rp3,2 triliun? Cukup ga anggarannya?',
+    botResponse: 'Pemotongan transfer dari pusat memang tantangan, tapi APBD DKI masih Rp82,5 triliun. Kami akan kelola dengan efisien tanpa korbankan 12 proyek strategis senilai Rp28,5 triliun. Bappeda DKI sudah susun strategi penyesuaian anggaran dengan tetap jaga kualitas pelayanan publik.',
+    topic: 'Government and Public Policy',
+    urgencyRange: [70, 82],
   },
   // General templates
   {
@@ -1714,103 +1943,123 @@ export const enhancedKeywordsCloud = [
 // ========================================
 
 export const enhancedNewsInsights = {
-  date: '2025-10-21',
+  date: '2025-10-25',
   insight: [
-    {
-      topic: 'Infrastructure and Transportation',
-      main_issue: 'Kemacetan parah di **Jakarta Selatan** akibat perbaikan jalan Fatmawati yang bersamaan dengan pembangunan MRT Fase 3, menyebabkan waktu tempuh meningkat **150%** pada jam sibuk.',
-      problem: `**Koordinasi yang buruk** antara Dinas Bina Marga dan MRT Jakarta dalam penjadwalan proyek infrastruktur
-**Volume kendaraan meningkat 45%** karena pengalihan rute dari Jl. Fatmawati ke jalan alternatif yang tidak memadai
-**Kurangnya sosialisasi** kepada masyarakat tentang jalur alternatif yang tersedia`,
-      suggestion: '**Segera bentuk task force koordinasi** lintas dinas untuk sinkronisasi jadwal proyek infrastruktur. Tambahkan **10 unit bus Transjakarta** khusus untuk koridor Fatmawati-Blok M. Lakukan **sosialisasi masif** melalui media sosial dan papan informasi digital tentang rute alternatif terbaik.',
-      urgency_score: 87
-    },
-    {
-      topic: 'Environment and Disaster',
-      main_issue: 'Kualitas udara Jakarta mencapai **AQI 165** (tidak sehat) pada tanggal **19-21 Oktober 2025**, terutama di Jakarta Pusat dan Jakarta Selatan, melampaui batas aman WHO.',
-      problem: `**Emisi kendaraan bermotor** meningkat 35% pasca libur panjang Idul Adha
-**Aktivitas konstruksi** dari 15+ proyek pembangunan gedung tinggi di Jakarta Pusat tanpa dust control memadai
-**Kondisi cuaca** dengan inversi termal yang memerangkap polutan di permukaan`,
-      suggestion: 'Terapkan **kebijakan WFH wajib 3 hari/minggu** untuk pegawai pemerintah dan BUMN mulai 22 Oktober. Lakukan **inspeksi mendadak** di lokasi konstruksi dan berikan sanksi tegas untuk yang tidak menerapkan dust suppression. **Percepat program bike-sharing** dan tambah jalur sepeda di 5 koridor prioritas.',
-      urgency_score: 92
-    },
-    {
-      topic: 'Social and Economy',
-      main_issue: 'Harga cabai rawit melonjak **185%** dari Rp 35,000 menjadi **Rp 65,000/kg** di pasar-pasar Jakarta dalam 10 hari terakhir, memicu keluhan pedagang dan ibu rumah tangga.',
-      problem: `**Gagal panen** di sentra produksi cabai Jawa Barat dan Jawa Tengah akibat curah hujan tinggi pada awal Oktober
-**Jalur distribusi terganggu** akibat perbaikan jalan di jalur pantura yang memperlambat pasokan 40%
-**Spekulasi pedagang** yang menimbun stok menjelang Lebaran Maulid Nabi (26 Oktober 2025)`,
-      suggestion: 'Lakukan **operasi pasar cabai** dengan harga subsidi Rp 40,000/kg di 50 titik pasar tradisional mulai 22 Oktober. **Koordinasi dengan Bulog** untuk import cabai dari Thailand/India jika diperlukan. Lakukan **razia penimbunan** di pasar induk dan berikan sanksi tegas sesuai UU Perlindungan Konsumen.',
-      urgency_score: 78
-    },
+    // ISU TERKINI #1: Dana APBD Mengendap di Bank
     {
       topic: 'Government and Public Policy',
-      main_issue: 'Antrian panjang di kantor Dukcapil Jakarta menjelang **deadline perpanjangan e-KTP** tanggal 31 Oktober 2025, dengan waktu tunggu mencapai **4-6 jam** per pemohon.',
-      problem: `**Sistem pendaftaran online** yang sering error dan tidak user-friendly menyebabkan 60% warga tetap datang langsung
-**Kapasitas pelayanan terbatas** hanya 200 pemohon per hari per kantor Dukcapil kecamatan
-**Kurangnya sosialisasi** tentang layanan jemput bola Dukcapil untuk lansia dan difabel`,
-      suggestion: 'Buka **layanan weekend khusus** pada 26-27 Oktober 2025 di 10 kecamatan dengan antrian terpanjang. Deploy **mobile unit Dukcapil** ke 20 kelurahan prioritas. Perpanjang **deadline hingga 30 November 2025** sambil upgrade sistem online dengan interface yang lebih sederhana.',
-      urgency_score: 81
+      main_issue: 'Dana APBD DKI Jakarta sebesar **Rp 14,68 triliun mengendap di bank** per 22 Oktober 2025, dengan realisasi anggaran baru mencapai **68,3%** dari total Rp 82,5 triliun, memicu kritik DPRD dan publik.',
+      problem: `**Proses pengadaan yang lambat** di berbagai SKPD menyebabkan bottleneck penyerapan anggaran
+**Koordinasi antar-dinas yang buruk** dalam timeline proyek infrastruktur strategis
+**Kurangnya insentif dan sanksi** bagi SKPD yang lambat dalam merealisasikan anggaran
+**Birokrasi berbelit** dalam proses tender dan pencairan dana yang memakan waktu berbulan-bulan`,
+      suggestion: 'Bentuk **task force percepatan penyerapan APBD** langsung di bawah Gubernur dengan wewenang potong kompas birokrasi. Terapkan **reward and punishment system** untuk kepala SKPD berdasarkan tingkat penyerapan anggaran. **Sederhanakan proses pengadaan** dengan threshold lebih tinggi untuk e-procurement. Target **90% realisasi** akhir November 2025 dengan monitoring harian.',
+      urgency_score: 88
     },
+    // ISU TERKINI #2: KPK Kawal Normalisasi Kali Ciliwung
     {
-      topic: 'Safety and Crime',
-      main_issue: 'Peningkatan **45% kasus penjambretan** di Jakarta Timur dan Jakarta Utara dalam minggu terakhir (14-21 Oktober 2025), terutama di sekitar halte Transjakarta dan stasiun KRL.',
-      problem: `**Kurangnya penerangan** di 15+ halte Transjakarta yang menjadi titik rawan
-**Patroli polisi** yang tidak konsisten pada jam-jam malam (21:00-01:00 WIB)
-**Modus baru** pelaku menggunakan sepeda motor tanpa plat nomor dan beroperasi secara berkelompok`,
-      suggestion: 'Tingkatkan **patroli mobile polisi** di 20 titik rawan dengan fokus pada jam 19:00-02:00 WIB. Pasang **CCTV tambahan** di 15 halte prioritas dengan monitoring real-time. Luncurkan **aplikasi panic button** terintegrasi dengan command center Polda Metro Jaya untuk response cepat.',
-      urgency_score: 85
+      topic: 'Environment and Disaster',
+      main_issue: 'Proyek normalisasi Kali Ciliwung baru mencapai progres **52%** dari target **75%** akhir tahun, dengan **KPK turun langsung** menyoroti kendala pengadaan alat berat dan **pembebasan 12 bidang lahan tersisa** jelang musim hujan puncak.',
+      problem: `**Pembebasan lahan mandek** karena warga menolak skema kompensasi yang ditawarkan Pemprov DKI
+**Pengadaan alat berat terhambat** proses tender ulang setelah pemenang pertama gagal kontrak
+**Koordinasi lemah** antara Dinas SDA, BPN, dan kelurahan dalam percepatan proses administrasi
+**Timeline proyek terancam molor** dari target Maret 2026 menjadi pertengahan 2026`,
+      suggestion: 'KPK dan Gubernur **mediasi langsung dengan warga** untuk finalisasi kompensasi lahan dalam 2 minggu. **Percepat tender alat berat** dengan skema emergency procurement sesuai Perpres 12/2021. **Tambah shift kerja** menjadi 24 jam di 3 titik kritis. Deploy **pompa mobile tambahan** di 8 titik rawan banjir sebagai mitigasi jangka pendek. Target selesai **Februari 2026** sebelum puncak musim hujan.',
+      urgency_score: 91
+    },
+    // ISU TERKINI #3: Penolakan Visa Atlet Israel - Dampak Event & Ekonomi
+    {
+      topic: 'Social and Economy',
+      main_issue: 'IOC merekomendasikan **tidak ada event olahraga internasional di Indonesia** pasca penolakan visa 5 atlet Israel untuk Kejuaraan Dunia Senam Jakarta, mengancam **FIBA Asia Cup 2026** dan **Asian Beach Games 2027**, dengan potensi kerugian ekonomi **Rp 850 miliar/tahun**.',
+      problem: `**Konflik kebijakan** antara politik luar negeri pemerintah pusat dan kepentingan ekonomi daerah Jakarta
+**Reputasi Jakarta sebagai host** event internasional terancam rusak di mata federasi olahraga dunia
+**Investasi infrastruktur olahraga** senilai triliunan rupiah (GBK, JIExpo, Aquatic Center) berisiko sia-sia
+**Dampak berantai** ke sektor pariwisata, hotel (okupansi turun 25%), MICE, transportasi, dan kuliner`,
+      suggestion: '**Dialog intensif Gubernur DKI dengan Kemlu dan IOC** untuk mencari jalan tengah diplomatik yang tidak melanggar prinsip non-diskriminasi olahraga. Tawarkan **special visa arrangement** khusus untuk atlet internasional dengan jaminan keamanan. **Diversifikasi event** dengan fokus pada Asian Games 2032 dan event regional ASEAN yang lebih fleksibel. **Kampanye diplomasi olahraga** untuk meyakinkan federasi internasional tentang komitmen Jakarta.',
+      urgency_score: 84
+    },
+    // ISU TERKINI #4: Sanksi Bansos untuk Penjudi Online
+    {
+      topic: 'Government and Public Policy',
+      main_issue: 'Rencana sanksi penerima bansos yang terlibat judi online untuk **1,2 juta KK** penerima di Jakarta memicu pro-kontra karena **kekhawatiran salah sasaran** dan ketidakjelasan mekanisme verifikasi data.',
+      problem: `**Akurasi data sulit dipastikan** karena keterbatasan akses ke data transaksi keuangan personal
+**Koordinasi dengan Polisi dan Kemenkominfo** memakan waktu lama untuk verifikasi setiap kasus
+**Potensi pelanggaran privasi** jika data dikumpulkan tanpa prosedur hukum yang jelas
+**Risiko salah tuduh** yang bisa merugikan warga miskin yang benar-benar membutuhkan bansos`,
+      suggestion: 'Tunda implementasi hingga **sistem verifikasi yang akurat** tersedia dengan melibatkan ahli hukum dan privacy. **Fokus pada edukasi dan sosialisasi** bahaya judi online untuk penerima bansos. Buat **mekanisme klarifikasi dan banding** yang mudah diakses warga jika terkena sanksi. **Pilot project** di 2 kelurahan dulu sebelum implementasi massal untuk uji efektivitas dan fairness.',
+      urgency_score: 76
+    },
+    // ISU TERKINI #5: Pengetatan Fiskal Pusat vs Pembangunan Jakarta
+    {
+      topic: 'Government and Public Policy',
+      main_issue: 'Pemerintah pusat memangkas **transfer dana ke DKI Jakarta sebesar Rp 3,2 triliun** dalam kebijakan efisiensi fiskal, sementara Gubernur DKI menegaskan **12 proyek strategis senilai Rp 28,5 triliun** (MRT Fase 3, normalisasi kali, rusun) tidak boleh melambat.',
+      problem: `**Keterbatasan anggaran** akibat pemotongan transfer dari pusat mempersempit ruang fiskal DKI
+**Belanja operasional masih tinggi** (perjalanan dinas, rapat-rapat) yang bisa diefisiensikan lebih lanjut
+**Prioritas proyek tidak jelas** antara proyek bergengsi vs proyek yang langsung berdampak ke rakyat
+**Risiko defisit daerah** jika memaksakan semua proyek tanpa penyesuaian realistis`,
+      suggestion: 'Bappeda DKI susun **reprioritisasi anggaran** dengan fokus pada layanan dasar (kesehatan, pendidikan, banjir) dan proyek dengan multiplier effect tinggi. **Efisiensi belanja operasional** minimal 15% melalui digitalisasi rapat dan pengurangan perjalanan dinas. **Cari sumber pendanaan alternatif** melalui kerjasama KPBU (Kerjasama Pemerintah-Badan Usaha) untuk proyek infrastruktur. **Transparansi APBD** real-time di website agar publik bisa monitor.',
+      urgency_score: 82
     }
   ]
 };
 
 export const enhancedTikTokInsights = {
-  date: '2025-10-21',
+  date: '2025-10-25',
   insight: [
-    {
-      topic: 'Infrastructure and Transportation',
-      main_issue: 'Viral video kemacetan ekstrem di **Tol Dalam Kota** arah Cawang dengan **15.2 juta views**, warga mengeluh terlambat masuk kerja hingga 3 jam pada pagi hari 21 Oktober 2025.',
-      problem: `**Kecelakaan truk kontainer** di KM 12 yang menutup 2 lajur sejak pukul 05:30 WIB
-**Evakuasi lambat** memakan waktu 4 jam karena keterbatasan akses crane di lokasi
-**Arus balik** dari libur panjang yang bertepatan dengan waktu peak hour menambah volume 70%`,
-      suggestion: 'Deploy **sistem info lalu lintas real-time** via billboard digital dan social media setiap 15 menit. Siapkan **tim evakuasi cepat** dengan peralatan khusus di 5 titik strategis tol. Terapkan **dynamic pricing tol** yang lebih tinggi pada jam sibuk untuk mengurangi volume.',
-      urgency_score: 83
-    },
-    {
-      topic: 'Environment and Disaster',
-      main_issue: 'Trending hashtag **#BanjirJakartaLagi** dengan **8.7 juta mentions** menyusul genangan **80cm** di Jakarta Barat (Cengkareng) pada 20 Oktober 2025 malam akibat hujan deras 4 jam.',
-      problem: `**Drainase tersumbat** sampah dan sedimentasi di 12 titik kritis di Cengkareng
-**Pompa air rusak** di 3 lokasi strategis sejak 2 minggu lalu belum diperbaiki
-**Normalisasi kali Pesanggrahan** yang tertunda karena proses pembebasan lahan`,
-      suggestion: 'Lakukan **pembersihan drainase massal** dalam 48 jam dengan mobilisasi 200 pekerja. **Perbaiki segera** 3 pompa air yang rusak dengan target operasional 22 Oktober. Percepat **pembebasan lahan** untuk normalisasi kali dengan skema kompensasi yang adil.',
-      urgency_score: 89
-    },
-    {
-      topic: 'Social and Economy',
-      main_issue: 'Video viral UMKM kuliner di **Pasar Santa** mengeluh omzet turun **60%** pasca kenaikan tarif parkir dari Rp 5,000 menjadi **Rp 20,000**, mendapat **4.3 juta views** dan dukungan netizen.',
-      problem: `**Kenaikan tarif parkir drastis** tanpa sosialisasi memadai membuat pengunjung beralih ke mal lain
-**Tidak ada kompensasi** atau stimulus untuk UMKM yang terdampak
-**Akses transportasi publik terbatas** ke Pasar Santa mendorong ketergantungan pada kendaraan pribadi`,
-      suggestion: 'Kaji ulang **kebijakan tarif parkir** dengan melibatkan asosiasi UMKM dan pengunjung. Berikan **subsidi sewa** 50% selama 3 bulan untuk UMKM terdampak. Operasikan **shuttle bus gratis** dari stasiun MRT Blok M ke Pasar Santa setiap 30 menit.',
-      urgency_score: 74
-    },
+    // ISU TERKINI TIKTOK #1: Dana APBD Mengendap - Viral di TikTok
     {
       topic: 'Government and Public Policy',
-      main_issue: 'TikTok creator dengan **6.2 juta followers** membuat konten kritis tentang lambatnya proses perizinan **IMB online** yang memakan waktu **4 bulan** vs janji 14 hari, viral dengan **12.5 juta views**.',
-      problem: `**Sistem SIMBG** yang sering down dan tidak stabil menghambat proses verifikasi
-**Kurangnya SDM verifikator** hanya 25 orang untuk melayani ribuan permohonan per bulan
-**Persyaratan yang kompleks** dan tidak jelas menyebabkan banyak dokumen ditolak berulang kali`,
-      suggestion: 'Lakukan **upgrade server SIMBG** dalam 1 minggu dengan redundancy system. Rekrut **50 verifikator tambahan** dan buka layanan **konsultasi online gratis** untuk membantu pemohon menyiapkan dokumen. Sederhanakan **checklist persyaratan** menjadi 1 halaman infografis yang mudah dipahami.',
-      urgency_score: 77
+      main_issue: 'Video TikTok kritik dana APBD **Rp 14,68 triliun mengendap di bank** viral dengan **22.3 juta views**, creator membandingkan dengan fasilitas publik yang rusak: jalan berlubang, sekolah bocor, puskesmas kekurangan obat.',
+      problem: `**Transparansi rendah** dalam laporan penyerapan APBD yang membuat publik tidak tahu uangnya untuk apa
+**Fasilitas publik darurat terabaikan** sementara anggaran tidak tersalurkan dengan alasan birokrasi
+**Ketidakpercayaan publik** meningkat terhadap komitmen pemerintah untuk kesejahteraan rakyat
+**Viralitas di media sosial** menciptakan pressure politik yang tinggi untuk segera action`,
+      suggestion: 'Gubernur DKI **live streaming** di TikTok dan Instagram untuk explain secara detail kemana dana APBD dan timeline penyerapan. Buat **dashboard publik real-time** di website Jakarta.go.id untuk tracking setiap rupiah APBD. **Prioritaskan quick wins** seperti tambal jalan berlubang dalam 1 minggu untuk restore public trust. Launch **program aspirasi cepat** via TikTok untuk warga laporkan fasilitas rusak yang butuh perbaikan urgent.',
+      urgency_score: 89
     },
+    // ISU TERKINI TIKTOK #2: Banjir Akibat Normalisasi Kali Ciliwung Lambat
     {
-      topic: 'Safety and Crime',
-      main_issue: 'Video CCTV penjambretan brutal di **Kelapa Gading** yang menewaskan 1 korban viral dengan **18.9 juta views**, memicu kemarahan publik dan tuntutan penangkapan pelaku.',
-      problem: `**Pelaku masih buron** sejak kejadian 19 Oktober 2025 malam meskipun wajah terekam jelas CCTV
-**Koordinasi antar polsek** yang lambat menyebabkan pelaku sempat lolos ke Bekasi
-**Minimnya patroli** di area permukiman meskipun sudah 3 kali terjadi penjambretan dalam sebulan`,
-      suggestion: 'Bentuk **tim khusus pemburu pelaku** dengan reward Rp 50 juta untuk informasi yang membawa penangkapan. Tingkatkan **patroli 24/7** di Kelapa Gading dengan minimum 5 unit mobil patroli. Pasang **100 CCTV tambahan** di titik-titik buta dan sambungkan ke command center.',
-      urgency_score: 94
+      topic: 'Environment and Disaster',
+      main_issue: 'Hashtag **#KPKKawalCiliwung** trending dengan **16.8 juta mentions** setelah warga bantaran Kali Ciliwung bikin video time-lapse progres proyek yang **stagnan 3 bulan terakhir**, mencapai **19.4 juta views**.',
+      problem: `**Pembebasan lahan deadlock** dengan 12 warga yang menolak kompensasi, viral di TikTok dengan simpati publik ke warga
+**Alat berat nganggur** di lokasi proyek karena tender ulang yang berlarut-larut sejak Juli 2025
+**Musim hujan sudah dimulai** tapi progres masih 52%, warga takut banjir besar seperti tahun 2025 yang telan 9 korban jiwa
+**Kredibilitas pemerintah** dipertaruhkan karena janji selesai Maret 2026 terlihat mustahil`,
+      suggestion: 'Gubernur dan KPK **mediasi langsung di TikTok Live** dengan warga yang menolak kompensasi untuk show good faith. **Emergency procurement** alat berat dalam 1 minggu tanpa tender ulang dengan pengawasan KPK ketat. **Deploy pompa mobile ekstra** di 12 titik rawan banjir sebagai damage control. Buat **progress report mingguan** via TikTok official DKI Jakarta untuk rebuild trust dan show serious commitment.',
+      urgency_score: 93
+    },
+    // ISU TERKINI TIKTOK #3: IOC Ban Indonesia - Dampak ke Ekonomi Jakarta
+    {
+      topic: 'Social and Economy',
+      main_issue: 'Pengusaha hotel Jakarta viral di TikTok **menangis** karena IOC ban Indonesia, event **FIBA Asia Cup 2026 batal**, hotel sudah investasi **Rp 45 miliar** untuk renovasi, video dapat **14.7 juta views** dan simpati netizen.',
+      problem: `**Clash kebijakan pusat-daerah** membuat Jakarta jadi korban keputusan politik luar negeri
+**Okupansi hotel turun 25%** dalam 1 minggu setelah pengumuman IOC, banyak booking asing yang cancel
+**UMKM ekonomi kreatif** yang bergantung event olahraga terancam gulung tikar (merchandise, F&B, tour guide)
+**Reputasi Jakarta** sebagai host city berkelas dunia hancur, butuh puluhan tahun untuk rebuild`,
+      suggestion: 'Gubernur DKI **lobby intensif** ke Kemlu dan Presiden untuk special visa sports exemption yang tidak melanggar kebijakan foreign policy. **Kompensasi darurat** untuk hotel dan UMKM terdampak melalui stimulus Rp 500 miliar dari APBD. **Pivot strategi** dengan genjot event regional ASEAN dan domestic sports yang tidak perlu approval IOC. **Campaign #JakartaSportsHub** di TikTok dengan influencer untuk keep Jakarta top-of-mind sebagai host city.',
+      urgency_score: 86
+    },
+    // ISU TERKINI TIKTOK #4: Bansos Judol Controversy - Netizen Debat Sengit
+    {
+      topic: 'Government and Public Policy',
+      main_issue: 'Kebijakan sanksi bansos untuk penjudi online jadi **trending topic** di TikTok dengan **pro-kontra sengit**, video **"Gimana Buktiin Bansos Buat Judol?"** dapat **18.2 juta views**, netizen khawatir **surveillance negara** berlebihan.',
+      problem: `**Privacy concern** tinggi karena cara verifikasi tidak jelas, warga takut disadap dan dimonitor
+**Potensi abuse of power** dengan tuduhan tanpa bukti kuat untuk lawan politik atau dendam pribadi
+**Stigma sosial** untuk penerima bansos yang sudah severe, kebijakan ini bikin tambah parah
+**Implementasi prematur** tanpa pilot study dan mechanism yang clear untuk protect warga`,
+      suggestion: '**Tunda kebijakan** sampai ada framework hukum yang jelas dan melindungi privacy warga. **Edukasi massal** bahaya judi online via TikTok influencer dan ulama yang punya kredibilitas tinggi. Buat **hotline anonymous** untuk warga lapor jika ada tetangga yang judi online tanpa kriminalisasi. **Pilot project** di 2 kelurahan dengan full transparency untuk test effectiveness dan fairness sebelum scale up.',
+      urgency_score: 78
+    },
+    // ISU TERKINI TIKTOK #5: Fiskal Ketat vs Janji Pembangunan - Netizen Bingung
+    {
+      topic: 'Government and Public Policy',
+      main_issue: 'Video side-by-side **janji kampanye Gubernur vs realita fiskal ketat** viral **21.6 juta views**, netizen bingung mana yang prioritas: **efisiensi** vs **pembangunan infrastruktur**, komentar 430K mostly kecewa.',
+      problem: `**Komunikasi publik yang buruk** antara retorika "pembangunan jalan terus" vs realita budget dipotong Rp 3,2T
+**Ekspektasi warga terlalu tinggi** karena janji kampanye yang bombastis tanpa disclaimer jika pusat potong anggaran
+**Proyek setengah jalan** seperti rusun dan jalan tol berpotensi mangkrak jika budget tidak cukup
+**Political backlash** dari pemilih yang merasa dibohongi, approval rating turun 12 poin dalam sebulan`,
+      suggestion: 'Gubernur **transparency session via TikTok Live** untuk honest talk about fiscal constraint dan reprioritize projects bersama warga. **Crowdsource decision** mana proyek yang paling urgent via polling di social media. **Efficiency showcase** dengan publish berapa banyak hemat dari cut perjalanan dinas dan belanja operasional yang boros. **KPBU aggressive** untuk dapat investor private sector untuk proyek seperti MRT Fase 3 dan LRT agar tidak full APBD.',
+      urgency_score: 81
     }
   ]
 };
