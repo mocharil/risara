@@ -322,7 +322,7 @@ export function NetworkAnalysis({ data }: NetworkAnalysisProps) {
         const formattedPosts = formatPostsForSummary(top20Posts);
 
         const summaryResponse = (await Promise.race([
-          fetch('/api/gemini/summarize', {
+          fetch('/api/llama/summarize', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

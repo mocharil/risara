@@ -3,6 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getKnowledgeBaseCollection } from '@/lib/mongodb';
 import { uploadFileToGCS, generateUniqueFileName } from '@/lib/gcsConfig';
 
+// Configure route for Vercel
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60; // 60 seconds for file upload
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -42,7 +47,7 @@ export async function POST(request: NextRequest) {
 
     // Handle file upload to GCS if file exists
     if (file) {
-      console.log(`=Ä Processing file: ${file.name} (${file.size} bytes)`);
+      console.log(`=ï¿½ Processing file: ${file.name} (${file.size} bytes)`);
 
       // Validate file size (max 10MB)
       if (file.size > 10 * 1024 * 1024) {

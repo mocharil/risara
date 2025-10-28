@@ -39,7 +39,7 @@ The Knowledge Base feature allows users to upload supporting documents (PDF, DOC
 
 Your service account needs **Storage Object Admin** role.
 
-**Option A: Add role to existing Gemini service account**
+**Option A: Add role to existing LLAMA service account**
 
 ```bash
 # Get your service account email from credentials
@@ -69,7 +69,7 @@ gcloud projects get-iam-policy paper-ds-production \
 ```
 
 You should see:
-- `roles/aiplatform.user` (for Gemini)
+- `roles/aiplatform.user` (for LLAMA)
 - `roles/storage.objectAdmin` (for GCS)
 
 ---
@@ -83,7 +83,7 @@ You should see:
 GCS_PROJECT_ID=paper-ds-production
 GCS_BUCKET_NAME=risara-knowledge-base
 
-# Will automatically use GEMINI_CREDS_JSON if GCS_CREDENTIALS_JSON not set
+# Will automatically use LLAMA_CREDS_JSON if GCS_CREDENTIALS_JSON not set
 # Or you can set explicitly:
 # GCS_CREDENTIALS_JSON={"type":"service_account",...}
 ```
@@ -100,7 +100,7 @@ Add these for **Production**, **Preview**, and **Development**:
 | `GCS_BUCKET_NAME` | Your GCS bucket name | `risara-knowledge-base` |
 | `GCS_CREDENTIALS_JSON` | Service account JSON | `{"type":"service_account",...}` |
 
-**Note:** If you already set `GEMINI_CREDS_JSON`, the system will automatically use it for GCS. You don't need to set `GCS_CREDENTIALS_JSON` separately.
+**Note:** If you already set `LLAMA_CREDS_JSON`, the system will automatically use it for GCS. You don't need to set `GCS_CREDENTIALS_JSON` separately.
 
 ---
 
@@ -136,7 +136,7 @@ Create a test file `test-gcs.js`:
 ```javascript
 const { Storage } = require('@google-cloud/storage');
 
-const credentials = JSON.parse(process.env.GEMINI_CREDS_JSON);
+const credentials = JSON.parse(process.env.LLAMA_CREDS_JSON);
 const storage = new Storage({
   projectId: 'paper-ds-production',
   credentials: credentials
@@ -237,7 +237,7 @@ Knowledge base entries are stored in MongoDB:
 
 **Solution:**
 1. Check `GCS_PROJECT_ID` is set
-2. Check `GCS_CREDENTIALS_JSON` or `GEMINI_CREDS_JSON` is set
+2. Check `GCS_CREDENTIALS_JSON` or `LLAMA_CREDS_JSON` is set
 3. Verify JSON format is valid
 
 ### Error: "Permission denied"

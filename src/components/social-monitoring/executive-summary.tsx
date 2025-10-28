@@ -134,7 +134,7 @@ export function ExecutiveSummary({ data, isLoading, onRefresh }: ExecutiveSummar
                 AI-Generated Executive Summary
               </CardTitle>
               <CardDescription>
-                Powered by Gemini 2.5 Flash Lite
+                Powered by LLAMA 4 Maverick
               </CardDescription>
             </div>
             {onRefresh && (

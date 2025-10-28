@@ -1,10 +1,10 @@
-# Gemini AI Setup Guide
+# LLAMA AI Setup Guide
 
-This guide explains how to configure Gemini AI credentials for the Risara application, both for local development and Vercel deployment.
+This guide explains how to configure LLAMA AI credentials (via Vertex AI) for the Risara application, both for local development and Vercel deployment.
 
 ## 🔑 Two Methods to Configure Credentials
 
-### Method 1: GEMINI_CREDS_JSON (✅ Recommended for Vercel)
+### Method 1: LLAMA_CREDS_JSON (✅ Recommended for Vercel)
 
 Use this method when deploying to Vercel or any cloud platform where you cannot upload credential files.
 
@@ -32,8 +32,8 @@ Use this method when deploying to Vercel or any cloud platform where you cannot 
 3. **For Local Development:**
    Add to `.env.local`:
    ```bash
-   GEMINI_PROJECT_ID=your-project-id
-   GEMINI_CREDS_JSON='{"type":"service_account",...}'  # Paste entire JSON as single line
+   LLAMA_PROJECT_ID=your-project-id
+   LLAMA_CREDS_JSON='{"type":"service_account",...}'  # Paste entire JSON as single line
    ```
 
 4. **For Vercel Deployment:**
@@ -42,8 +42,8 @@ Use this method when deploying to Vercel or any cloud platform where you cannot 
 
    | Key | Value |
    |-----|-------|
-   | `GEMINI_PROJECT_ID` | your-gcp-project-id |
-   | `GEMINI_CREDS_JSON` | Paste entire JSON as single line |
+   | `LLAMA_PROJECT_ID` | your-gcp-project-id |
+   | `LLAMA_CREDS_JSON` | Paste entire JSON as single line |
 
    **Important:**
    - The JSON must be on a **single line** (no line breaks)
@@ -52,7 +52,7 @@ Use this method when deploying to Vercel or any cloud platform where you cannot 
 
 ---
 
-### Method 2: GEMINI_CREDS_PATH (For Local Development Only)
+### Method 2: LLAMA_CREDS_PATH (For Local Development Only)
 
 Use this method for local development when you have the credential file on your machine.
 
@@ -68,8 +68,8 @@ Use this method for local development when you have the credential file on your 
 
 2. **Add to `.env.local`:**
    ```bash
-   GEMINI_PROJECT_ID=your-project-id
-   GEMINI_CREDS_PATH=skilled-compass.json  # or ./path/to/your/credentials.json
+   LLAMA_PROJECT_ID=your-project-id
+   LLAMA_CREDS_PATH=skilled-compass.json  # or ./path/to/your/credentials.json
    ```
 
 3. **Add credential file to `.gitignore`:**
@@ -86,10 +86,10 @@ Use this method for local development when you have the credential file on your 
 
 The application checks credentials in this order:
 
-1. **GEMINI_CREDS_JSON** (environment variable) ← **Priority 1**
-2. **GEMINI_CREDS_PATH** (file path) ← **Priority 2**
+1. **LLAMA_CREDS_JSON** (environment variable) ← **Priority 1**
+2. **LLAMA_CREDS_PATH** (file path) ← **Priority 2**
 
-If neither is set, Gemini features will be disabled (app will use dummy data).
+If neither is set, LLAMA features will be disabled (app will use dummy data).
 
 ---
 
@@ -97,9 +97,9 @@ If neither is set, Gemini features will be disabled (app will use dummy data).
 
 | Variable | Required | Description | Example |
 |----------|----------|-------------|---------|
-| `GEMINI_PROJECT_ID` | ✅ Yes | Your GCP Project ID | `paper-ds-production` |
-| `GEMINI_CREDS_JSON` | For Vercel | Service account JSON as string | `{"type":"service_account",...}` |
-| `GEMINI_CREDS_PATH` | For Local | Path to credential file | `skilled-compass.json` |
+| `LLAMA_PROJECT_ID` | ✅ Yes | Your GCP Project ID | `paper-ds-production` |
+| `LLAMA_CREDS_JSON` | For Vercel | Service account JSON as string | `{"type":"service_account",...}` |
+| `LLAMA_CREDS_PATH` | For Local | Path to credential file | `skilled-compass.json` |
 
 ---
 
@@ -113,8 +113,8 @@ If neither is set, Gemini features will be disabled (app will use dummy data).
 npm run dev
 
 # 3. Check the console logs
-# You should see: ✅ Using GEMINI_CREDS_JSON from environment variable
-# Or: ✅ Using GEMINI_CREDS_PATH from file: skilled-compass.json
+# You should see: ✅ Using LLAMA_CREDS_JSON from environment variable
+# Or: ✅ Using LLAMA_CREDS_PATH from file: skilled-compass.json
 ```
 
 ### Vercel Deployment
@@ -136,12 +136,12 @@ npm run dev
 **Cause:** Credentials not found or invalid
 
 **Solutions:**
-1. Check `GEMINI_PROJECT_ID` is set correctly
-2. If using `GEMINI_CREDS_JSON`:
+1. Check `LLAMA_PROJECT_ID` is set correctly
+2. If using `LLAMA_CREDS_JSON`:
    - Make sure JSON is on single line
    - Check for syntax errors in JSON
    - Verify newlines in private_key are `\n` not actual line breaks
-3. If using `GEMINI_CREDS_PATH`:
+3. If using `LLAMA_CREDS_PATH`:
    - Verify file exists at the specified path
    - Check file has valid JSON format
    - Ensure file has proper permissions
@@ -155,13 +155,13 @@ npm run dev
 2. Or relative path from project root: `./credentials/file.json`
 3. Verify file exists: `ls -la skilled-compass.json`
 
-### Vercel: "No Gemini credentials found"
+### Vercel: "No LLAMA credentials found"
 
 **Cause:** Environment variables not set in Vercel
 
 **Solutions:**
 1. Go to Vercel Dashboard → Project → Settings → Environment Variables
-2. Add `GEMINI_PROJECT_ID` and `GEMINI_CREDS_JSON`
+2. Add `LLAMA_PROJECT_ID` and `LLAMA_CREDS_JSON`
 3. Make sure to select all environments: Production, Preview, Development
 4. Redeploy the application
 
@@ -174,7 +174,7 @@ npm run dev
    - Keep credentials in `.env.local` (also gitignored)
 
 2. **Use environment variables for production**
-   - Always use `GEMINI_CREDS_JSON` in Vercel
+   - Always use `LLAMA_CREDS_JSON` in Vercel
    - Never hardcode credentials in code
 
 3. **Rotate credentials regularly**
@@ -206,7 +206,7 @@ npm run dev
 
    # Or manually: Remove all line breaks except in private_key
    ```
-4. Paste in Vercel Environment Variables as `GEMINI_CREDS_JSON`
+4. Paste in Vercel Environment Variables as `LLAMA_CREDS_JSON`
 
 **Example minified JSON:**
 ```

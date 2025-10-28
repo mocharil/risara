@@ -70,13 +70,13 @@ Required collections:
 - `insight_news` - AI-generated news insights
 - `insight_tiktok` - AI-generated TikTok insights
 
-#### Gemini AI Configuration (Optional)
+#### LLAMA AI Configuration (Optional)
 ```bash
-GEMINI_PROJECT_ID=your-gcp-project-id
-GEMINI_CREDS_PATH=/app/credentials/skilled-compass.json
+LLAMA_PROJECT_ID=your-gcp-project-id
+LLAMA_CREDS_PATH=/app/credentials/skilled-compass.json
 ```
 
-To use real Gemini AI instead of dummy data:
+To use real LLAMA AI instead of dummy data:
 1. Uncomment the volumes section in `docker-compose.yml`
 2. Place your `skilled-compass.json` credentials file in the project root
 3. Set `USE_DUMMY_DATA=false`
@@ -169,7 +169,7 @@ docker build --progress=plain . 2>&1 | grep "COPY"
 docker exec -it risara-demo ls -la /app/credentials/
 
 # Check environment variables
-docker exec -it risara-demo env | grep GEMINI
+docker exec -it risara-demo env | grep LLAMA
 ```
 
 ## Performance Optimization

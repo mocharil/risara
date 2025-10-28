@@ -1,14 +1,6 @@
-// src/app/api/gemini/summarize/route.ts
+// src/app/api/llama/summarize/route.ts
 import { NextResponse } from 'next/server';
-import {
-  initializeVertexAI,
-  GEMINI_MODEL,
-  GEMINI_SAFETY_SETTINGS,
-  GEMINI_GENERATION_CONFIG
-} from '@/lib/geminiConfig';
-
-// Initialize Vertex AI with credentials from environment
-const vertexAI = initializeVertexAI();
+import { generateLlamaContent } from '@/lib/llamaConfig';
 
 function generateSummaryPrompt(posts: Array<{ full_text: string; contextual_content: string }>) {
   const postsText = posts
@@ -38,18 +30,6 @@ ${postsText}`;
 
 export async function POST(request: Request) {
   try {
-    // Validate VertexAI initialization
-    if (!vertexAI) {
-      console.error('VertexAI not initialized. Check credentials and project ID.');
-      return NextResponse.json(
-        {
-          error: 'Gemini service not initialized',
-          details: 'Check GEMINI_PROJECT_ID and GEMINI_CREDS_JSON (or GEMINI_CREDS_PATH) environment variables'
-        },
-        { status: 500 }
-      );
-    }
-
     const body = await request.json();
     const { search_results } = body;
 
@@ -63,21 +43,12 @@ export async function POST(request: Request) {
     // Generate prompt
     const prompt = generateSummaryPrompt(search_results);
 
-    // Get generative model
-    const generativeModel = vertexAI.getGenerativeModel({
-      model: GEMINI_MODEL,
-      safetySettings: GEMINI_SAFETY_SETTINGS,
-      generationConfig: GEMINI_GENERATION_CONFIG,
-    });
-
-    // Generate content
-    const result = await generativeModel.generateContent(prompt);
-    const response = result.response;
-    const text = response.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    // Call LLAMA API using OpenAI-compatible endpoint
+    const text = await generateLlamaContent(prompt);
 
     if (!text) {
       return NextResponse.json(
-        { error: 'No response from Gemini API' },
+        { error: 'No response from LLAMA API' },
         { status: 500 }
       );
     }
@@ -99,7 +70,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ summary });
   } catch (error: any) {
-    console.error('Gemini API error:', error);
+    console.error('LLAMA API error:', error);
     console.error('Error stack:', error.stack);
     return NextResponse.json(
       {

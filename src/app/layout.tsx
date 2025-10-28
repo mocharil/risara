@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: 'Risara',
   description: 'Real-Time Monitoring and AI-Powered Citizen Engagement for Jakarta',
   icons: {
-    icon: "/risara.png",
-    apple: "/risara.png",
+    icon: "/risara_logo_submission.png",
+    apple: "/risara_logo_submission.png",
   },
 }
 

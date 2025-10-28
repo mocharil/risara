@@ -3,25 +3,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getInsightTikTokCollection, getInsightNewsCollection } from '@/lib/mongodb';
 import { enhancedExecutiveSummary } from '@/lib/enhancedDummyData';
 import { useDummyData } from '@/lib/useDummyData';
-import {
-  initializeVertexAI,
-  GEMINI_MODEL,
-  GEMINI_SAFETY_SETTINGS,
-  GEMINI_GENERATION_CONFIG
-} from '@/lib/geminiConfig';
+import { generateLlamaContent } from '@/lib/llamaConfig';
 
 // Check if we should use dummy data
 const USE_DUMMY_DATA = useDummyData();
-
-// Initialize Vertex AI with credentials from environment
-const vertexAI = initializeVertexAI();
-
-// Use custom generation config with higher max tokens for executive summary
-const generationConfig = {
-  ...GEMINI_GENERATION_CONFIG,
-  temperature: 0.3, // Slightly higher for more creative summaries
-  maxOutputTokens: 4096, // Higher limit for longer executive summaries
-};
 
 function generateExecutiveSummaryPrompt(tiktokInsights: any[], newsInsights: any[], date: string) {
   const formatInsights = (insights: any[], platform: string) => {
@@ -105,19 +90,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(enhancedExecutiveSummary);
     }
 
-    // Validate VertexAI initialization
-    if (!vertexAI) {
-      console.error('VertexAI not initialized. Check credentials and project ID.');
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Gemini service not initialized',
-          details: 'Check GEMINI_PROJECT_ID and GEMINI_CREDS_PATH environment variables'
-        },
-        { status: 500 }
-      );
-    }
-
     const { searchParams } = new URL(request.url);
     const date = searchParams.get('date') || new Date().toISOString().split('T')[0];
 
@@ -162,23 +134,27 @@ export async function GET(request: NextRequest) {
     // Generate prompt
     const prompt = generateExecutiveSummaryPrompt(sortedTikTok, sortedNews, date);
 
-    // Get generative model
-    const generativeModel = vertexAI.getGenerativeModel({
-      model: GEMINI_MODEL,
-      safetySettings: GEMINI_SAFETY_SETTINGS,
-      generationConfig: generationConfig,
-    });
-
-    // Generate content
-    const result = await generativeModel.generateContent(prompt);
-    const response = result.response;
-    const summaryText = response.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    // Call LLAMA API (with automatic Gemini fallback)
+    let summaryText;
+    try {
+      summaryText = await generateLlamaContent(prompt);
+    } catch (error: any) {
+      console.error('❌ Error generating executive summary:', error);
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Failed to generate executive summary',
+          details: error.message
+        },
+        { status: 500 }
+      );
+    }
 
     if (!summaryText) {
       return NextResponse.json(
         {
           success: false,
-          error: 'No response from Gemini API'
+          error: 'No response from AI'
         },
         { status: 500 }
       );
